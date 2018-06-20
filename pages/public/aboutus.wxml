@@ -1,0 +1,15 @@
+<!--index.wxml-->
+<view class="main" style='width:{{system.windowWidth}}px;height:{{system.windowHeight}}px;'>
+  <view class='panel'>
+    <view class='aboutus'>
+      <view class='info'>
+        <text class='wechat_label'>微信号：</text>
+        <text class='wechat_public'>suzhou_web</text>
+      </view>
+      <view class='code' bindtap='toPage'>
+        <cover-image src='https://mmbiz.qpic.cn/mmbiz/tXqhSfr37rOPSwYjHeJ1jnqrluy1mWZhSozIGdiamaia2NUiawmvn4vicmpAo75hUcUEy6lzicpoSH4NjKxfPicVfiaDg/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1' style='width:500rpx;height:500rpx;'></cover-image>
+      </view>
+    </view>
+
+  </view>
+</view>

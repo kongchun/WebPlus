@@ -69,3 +69,28 @@ Page({
   
   }
 })
+
+//   ,
+//   "tabBar": {
+//   "color": "#A2A2A2",
+//     "selectedColor": "#5B8AF6",
+//       "backgroundColor": "#FFFFFF",
+//         "borderStyle": "white",
+//           "position": "bottom",
+//             "list": [
+//               {
+//                 "pagePath": "pages/index/index",
+//                 "iconPath": "images/bar_home_black.png",
+//                 "selectedIconPath": "images/bar_home_black.png",
+//                 "selectedText": "薪资报告",
+//                 "text": "薪资报告"
+//               },
+//               {
+//                 "pagePath": "pages/public/aboutus",
+//                 "iconPath": "images/bar_mine_black.png",
+//                 "selectedIconPath": "images/bar_mine_black.png",
+//                 "selectedText": "关于我们",
+//                 "text": "关于我们"
+//               }
+//             ]
+// }

@@ -1,0 +1,33 @@
+.main{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+  background-color: #4F81F5;
+  padding: 16rpx;
+}
+.panel{
+  font-family: 微软雅黑;
+  background-color: #FFFFFF;
+  text-align: center;
+  border-radius:15rpx;
+  height:auto;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+.aboutus{
+  margin: 50rpx;
+}
+.aboutus .info{
+  color:rgb(51, 51, 51);
+  font-size: 38rpx;
+  line-height: 38rpx;
+}
+.aboutus .info .wechat_public{
+  color:rgb(96, 127, 166);
+  font-size: 38rpx;
+  font-weight: 700;
+}

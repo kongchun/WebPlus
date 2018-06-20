@@ -105,3 +105,12 @@
   font-size: 0.8rem;
   padding: 0.3rem;
 }
+.line-container{
+  height: 300rpx;
+  width: 650rpx;
+  margin: 0 auto;
+}
+ff-canvas {
+  width: 100%;
+  height: 100%;
+}

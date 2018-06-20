@@ -1,16 +1,17 @@
 <!--index.wxml-->
-<view class="index-container" style='width:{{system.windowWidth}}px;height:{{system.windowHeight}}px;'>
-  <view class='body'  style='width:{{system.windowWidth-23}}px;height:{{system.windowHeight-30}}px;'>
+<view class="main" style='width:{{system.windowWidth}}px;height:{{system.windowHeight}}px;'>
+  <view class='panel'>
     <view class='title' style='width:{{system.windowWidth-40}}px;'>
       <text class='label-begin'>薪资报告</text>
       <view class='time'>
         <text class='month'>6</text>
         <text class='label-end'>月</text>
       </view>
+      <view class='sub-title' style='width:{{system.windowWidth-40}}px;'>
+        <text>基于薪酬大数据统计</text>
+      </view>
     </view>
-    <view class='sub-title' style='width:{{system.windowWidth-40}}px;'>
-      <text>基于薪酬大数据统计</text>
-    </view>
+
     <view class='info' style='width:{{system.windowWidth-40}}px;'>
       <view class='name'>
         <text>苏</text>

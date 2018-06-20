@@ -1,4 +1,4 @@
-.index-container{
+.main{
   width: 100%;
   height: 100%;
   display: flex;
@@ -6,72 +6,82 @@
   justify-content: space-between;
   box-sizing: border-box;
   background-color: #4F81F5;
-  padding: 5px;
+  padding: 16rpx;
 }
-.body{
-  font-family: 黑体,微软雅黑;
+.panel{
+  font-family: 微软雅黑;
   background-color: #FFFFFF;
   text-align: center;
-  border-radius:0.5rem;
-  padding: 5px;
+  border-radius:15rpx;
+  height:100%;
   align-items: center;
-   display: flex;
+  display: flex;
   flex-direction: column;
 }
 .title{
-  width: 100%;
-  border: 0px solid red;
-  text-align: left;
+  padding-top:30rpx;
+  text-align: center;
   margin: 0 auto;
-  padding-left:0.5rem;
+  color:#222;
+  padding-left:0.5rem
 }
 .title .label-begin{
   font-weight: 500;
-  font-size: 2.2rem;
+  font-size: 70rpx;
   margin-right:0.5rem;
 }
 .title .time{
   color:#6CDC46;
   font-weight:600;
-  font-size:3.3rem;
+  font-size:120rpx;
   display:inline-block;
+  position:relative;
+  top:15rpx; 
+}
+.title .label-end{
+  font-weight: 600;
+  font-size: 75rpx;
 }
 .sub-title{
   width: 100%;
-  font-size: 0.8rem;
-  text-align: left;
+  font-size: 24rpx;
+  text-align: center;
   margin: 0 auto;
-  padding-left:0.5rem;
-  border: 0px solid red;
+  position: relative;
+  left:-110rpx;
+  top:0rpx;
 }
 .info{
-  margin: 2rem auto;
+  margin: 80rpx auto;
   width: 18rem;
   min-height:140px;
   border: 0px solid red;
 }
-.info .name{
-  margin: 3rem 0 2rem 0;
-}
+
 .info .name text{
   background-color: #444444;
   color: #E6E6E6;
-  border-radius: 1rem;
-  padding: 0.2rem 0.5rem;
-  font-size: 1rem;
+  border-radius: 50rpx;
+  width:40rpx;
+  height:40rpx;
+  display: inline-block;
+  font-size: 24rpx;
+  text-align:center;
+  line-height: 40rpx;
 }
 .info .avg-price{
+  margin-top:30rpx; 
   color: #FF3366;
   font-weight: 500;
-  font-size: 3rem;
+  font-size: 100rpx;
 }
 .info .unit{
-  font-size: 1rem;
-  margin-left: 0.3rem;
+  font-size: 50rpx;
+  margin-left: 10rpx;
 }
 .info .avg-price-compare{
-  color: #AAAAAA;
-  font-size: 0.9rem;
+  color: #999999;
+  font-size: 28rpx;
 }
 .footer{
   position: absolute;

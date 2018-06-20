@@ -1,0 +1,14 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/public/index",
+    "pages/charts/column/index",
+    "pages/url/pubpage"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#4F81F5",
+    "navigationBarTitleText": "前端Plus",
+    "navigationBarTextStyle": "white"
+  }
+}

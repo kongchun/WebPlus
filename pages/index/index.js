@@ -89,7 +89,7 @@ Page({
         value: {
           tickCount: 4,
           formatter(val) {
-            return val.toFixed(1) + '元';
+            return val;
           }
         }
       });

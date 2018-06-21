@@ -24,15 +24,15 @@
         <text class='unit'>元</text>
       </view>
       <view class='avg-price-compare'>
-        <text>{{salary.compare}}</text>
+        <text>{{salary.compare}}同比下降3%</text>
       </view>
     </view>
 
-    <!-- <view class="line-container">
+     <view class="chart-container">
       <ff-canvas id="line-dom" canvas-id="line" opts="{{ opts }}"></ff-canvas>
-    </view> -->
+    </view> 
 
-    <view class='footer' style='width:{{system.windowWidth-40}}px;'>
+    <view class='footer'>
       <view class='detail-btn'>
         <button bindtap='topagedetail'>查看报告详情</button>
       </view>

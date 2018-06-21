@@ -24,12 +24,12 @@
         <text class='unit'>元</text>
       </view>
       <view class='avg-price-compare'>
-        <text>{{salary.compare}}同比下降3%</text>
+        <text>{{salary.compare}}</text>
       </view>
     </view>
 
      <view class="chart-container">
-      <ff-canvas id="line-dom" canvas-id="line" opts="{{ opts }}"></ff-canvas>
+      <ff-canvas id="line-dom" canvas-id="line-dom" opts="{{ opts }}"></ff-canvas>
     </view> 
 
     <view class='footer'>

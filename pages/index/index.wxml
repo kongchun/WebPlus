@@ -4,7 +4,7 @@
     <view class='title' style='width:{{system.windowWidth-40}}px;'>
       <text class='label-begin'>薪资报告</text>
       <view class='time'>
-        <text class='month'>6</text>
+        <text class='month'>{{salary.month}}</text>
         <text class='label-end'>月</text>
       </view>
       <view class='sub-title' style='width:{{system.windowWidth-40}}px;'>
@@ -20,11 +20,11 @@
         <text>端</text>
       </view>
       <view class='avg-price'>
-        <text class='amt'>9759.48</text>
+        <text class='amt'>{{salary.average}}</text>
         <text class='unit'>元</text>
       </view>
       <view class='avg-price-compare'>
-        <text>同比下降3%</text>
+        <text>{{salary.compare}}</text>
       </view>
     </view>
 
@@ -37,7 +37,7 @@
         <button bindtap='topagedetail'>查看报告详情</button>
       </view>
       <view class='read-history'>
-        <text>2013人已查看</text>
+        <text>{{salary.read||0}}人已查看</text>
       </view>
     </view>
 

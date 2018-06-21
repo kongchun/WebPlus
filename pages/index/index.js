@@ -3,24 +3,70 @@
 // import F2 from '../../f2-canvas/lib/f2';
 // let chart = null;
 const app = getApp()
+import NumberAnimate from "../../utils/NumberAnimate";
 
 Page({
   data: {
     // opts: {
     //   onInit: initChart
     // },
-    system: { windowHeight: 603, windowWidth:373}
+    system: { windowHeight: 603, windowWidth:373},
+    salary: { month: '--', average: 0, read:0}
   },
   onLoad: function () {
     wx.pro.getSystemInfo().then(res=>{
       this.setData({ system: res });
     });
+    wx.pro.getStorage('salaryData').then(db => {
+      this.setData({ salary: db });
+    }).catch(e => {
+    });
+  },
+  onReady: function () {
+    this.getNewAverageSalary();
   },
   topagedetail: function(options){
     wx.navigateTo({
       url: '../public/index?query=new'
     })
-  }
+  },
+  getNewAverageSalary: function () {
+    wx.api.get(wx.api.ADDR.GET_NEW_AVG_SALARY).then(res=>{
+      if (!!res && 200 == res.statusCode && !!res.data){
+        let salaryData = res.data;
+        let salary = { month: salaryData.month, average: 0, read: salaryData.read };
+        this.setData({ salary});
+        wx.pro.setStorage('salaryData', salaryData);
+        let average = salaryData.average;
+        let n1 = new NumberAnimate({
+          from: average,//开始时的数字
+          speed: 1800,// 总时间
+          refreshTime: 100,//  刷新一次的时间
+          decimals: 2,//小数点后的位数
+          onUpdate: () => {//更新回调函数
+            salary.average = n1.tempValue;
+            this.setData({
+              salary: salary
+            });
+          },
+          onComplete: () => {//完成回调函数
+            
+          }
+        });
+        const key = res.data.year+'.'+res.data.month;
+        wx.pro.getStorage(key).then(db=>{
+        }).catch(e=>{
+          wx.api.post(wx.api.ADDR.ADD_AVG_SALARY_HITS, { year: res.data.year, month: res.data.month }).then(res => {
+            if (!!res && 200 == res.statusCode && !!res.data) {
+              if ((!!res.data.result && !!res.data.result.n && res.data.result.n > 0) || (!!res.data.n && res.data.n > 0)) {
+                wx.pro.setStorage(key,true);
+              }
+            }
+          });
+        });
+      }
+    })
+  },
 })
 
 

@@ -1,16 +1,21 @@
 'use strict';
 
-var host = 'https://limao.technologycloud.cn/api';
-//host = 'http://127.0.0.1:8080/api';
+var host = 'https://technologycloud.cn';
+//host = 'http://127.0.0.1:5000';
+const addr = {
+  GET_NEW_AVG_SALARY: host + '/api/getNewAverageSalary', 
+  ADD_AVG_SALARY_HITS: host + '/api/readAverageSalary'
+};
 var serverHost = host+'/client';
 var fileHost = host+'/upload';
 module.exports = {
   HOST: host,
+  ADDR: addr,
   LIST_DEVICE: serverHost + '/device',
   
   get (url) {
     return new Promise((resolve, reject) => {
-      console.log(url)
+      //console.log(url)
       wx.request({
         url: url,
         headers: {

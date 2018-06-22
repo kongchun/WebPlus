@@ -1,5 +1,6 @@
 
 .main{
+
   width: 100%;
   height: 100%;
   display: flex;
@@ -10,10 +11,10 @@
   background: linear-gradient(#4F81F5, #5B5AE2);
   padding: 16rpx;
   padding-bottom: 30rpx;
+  font-family:"DIN", "微软雅黑";
   
 }
 .panel{
-  font-family: 微软雅黑;
   background-color: #FFFFFF;
   text-align: center;
   border-radius:15rpx;
@@ -30,6 +31,7 @@
   padding-left:0.5rem
 }
 .title .label-begin{
+  
   font-weight: 500;
   font-size: 68rpx;
   margin-right:0.5rem;
@@ -74,6 +76,7 @@
   line-height: 40rpx;
 }
 .info .avg-price{
+  font-family: "DIN";
   margin-top:40rpx; 
   color: #FF3366;
   font-weight: 500;

@@ -25,6 +25,8 @@
       </view>
       <view class='avg-price-compare'>
         <text>{{salary.compare}}</text>
+        <text wx:if="{{salary.per=='up'}}" class='per p_up'>↑</text>
+        <text wx:if="{{salary.per=='down'}}" class='per p_down'>↓</text>
       </view>
     </view>
 

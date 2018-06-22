@@ -35,7 +35,7 @@ Page({
         let salaryData = res.data.salary;
         this.loadChart(res.data.arr||[]);
         if (!!!salaryData) return;
-        let salary = { month: salaryData.month, average: 0, read: salaryData.read, compare: salaryData.compare };
+        let salary = { month: salaryData.month, average: 0, read: salaryData.read, compare: salaryData.compare, per: salaryData.per };
         this.setData({ salary: salary});
         wx.pro.setStorage('salaryData', salaryData);
         let average = salaryData.average;
@@ -111,7 +111,6 @@ Page({
           });
           tooltipItems.map(item => {
             const { name, value } = item;
-            console.log(value)
             if (map[name]) {
               map[name].value = value + "元";
             }

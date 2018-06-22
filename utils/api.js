@@ -1,7 +1,7 @@
 'use strict';
 
 var host = 'https://technologycloud.cn';
-// host = 'http://127.0.0.1:5000';
+//host = 'http://127.0.0.1:5000';
 const addr = {
   GET_NEW_AVG_SALARY: host + '/api/getNewAverageSalary', 
   ADD_AVG_SALARY_HITS: host + '/api/readAverageSalary'

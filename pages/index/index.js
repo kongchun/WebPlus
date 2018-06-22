@@ -10,7 +10,7 @@ Page({
     },
     requestData: null, // 异步请求获取的数据
     system: { windowHeight: 603, windowWidth:373},
-    salary: { month: '--', average: 0, read:0}
+    salary: { month: '1', average: 0, read:0}
   },
   onLoad: function () {
     wx.pro.getSystemInfo().then(res=>{
@@ -41,7 +41,7 @@ Page({
         let average = salaryData.average;
         let n1 = new NumberAnimate({
           from: average,//开始时的数字
-          speed: 1800,// 总时间
+          speed: 1000,// 总时间
           refreshTime: 100,//  刷新一次的时间
           decimals: 2,//小数点后的位数
           onUpdate: () => {//更新回调函数
@@ -71,28 +71,33 @@ Page({
     if(!!!data || data.length<=0) return;
     this.chartComponent = this.selectComponent('#line-dom');
     this.chartComponent.init((canvas, width, height) => {
-      var ticks = [];
-      data.forEach(function (obj) {
-        ticks.push(obj.key);
-      });
+     
       const chart = new F2.Chart({
         el: canvas,
         width,
         height
       });
-
+  
       chart.source(data, {
-        year: {
-          range: [0, 1],
-          ticks: ticks
+        key: {
+          formatter(val) {
+            return val+"月";
+          },
+          range: [0, 1]
         },
         value: {
-          tickCount: 4,
-          formatter(val) {
-            return val;
-          }
+          tickCount: 4
         }
       });
+
+      chart.axis('value', {
+        label: (text, index, total) => {
+          const cfg = {
+            text : (text/1000).toFixed(1) + 'K'
+          };
+          return cfg;
+        }
+      })
 
       chart.tooltip({
         custom: true, // 自定义 tooltip 内容框
@@ -106,8 +111,9 @@ Page({
           });
           tooltipItems.map(item => {
             const { name, value } = item;
+            console.log(value)
             if (map[name]) {
-              map[name].value = value;
+              map[name].value = value + "元";
             }
           });
           legend.setItems(Object.values(map));
@@ -117,11 +123,40 @@ Page({
           legend.setItems(chart.getLegendItems().country);
         }
       });
+
+      
+    //  data.map((i)=>{
+    //    var tags =  [i.key,i.value]
+    //         console.log(tags)
+    //         chart.guide().tag({
+    //           position: tags,
+    //           content: i.value,
+    //           width:"200rpx",
+    //           direct: 'tc',
+    //           offsetY: -5,
+    //           background: {
+    //             padding: [4, 6],
+    //             fill: '#32933D'
+    //           },
+    //           pointStyle: {
+    //             fill: '#32933D'
+    //           }
+    //         });
+    //   });
+     
+     
       chart.line().position('key*value').color('type', val => {
         if (val === '薪资') {
           return '#32933D';
         }
       });
+ 
+      //chart.line().position('key*value').color("#32933D");
+      chart.point().position('key*value').style({
+        stroke: '#fff',
+        lineWidth: 1
+      }).color("#32933D");
+     chart.area().position('key*value').color("#32933D");
       chart.render();
       this.chart = chart;
       return chart;

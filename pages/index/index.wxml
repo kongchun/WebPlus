@@ -1,6 +1,6 @@
 <!--index.wxml-->
 <view class="main" style='width:{{system.windowWidth}}px;height:{{system.windowHeight}}px;'>
-  <view class='panel'>
+  <view class='panel' style="padding-top:{{(system.windowHeight>667)?(system.windowHeight-667)/4:0}}rpx">
     <view class='title' style='width:{{system.windowWidth-40}}px;'>
       <text class='label-begin'>薪资报告</text>
       <view class='time'>
@@ -30,7 +30,7 @@
       </view>
     </view>
 
-     <view class="chart-container">
+     <view class="chart-container" style="margin-top:{{(system.windowHeight>667)?(system.windowHeight-667)/2:0}}rpx">
       <ff-canvas id="line-dom" canvas-id="line-dom" opts="{{ opts }}"></ff-canvas>
     </view> 
 

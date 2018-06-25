@@ -1,6 +1,8 @@
 //app.js
+wx.host = "https://technologycloud.cn";
+//wx.host ="http://127.0.0.1:5000";
 wx.api = require('utils/api.js');
-wx.pro = require('utils/promisify.js')
+wx.pro = require('utils/promisify.js');
 App({
   onLaunch: function () {
     // 展示本地存储能力

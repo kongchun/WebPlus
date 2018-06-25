@@ -1,7 +1,6 @@
 'use strict';
 
-var host = 'https://technologycloud.cn';
-// host = 'http://127.0.0.1:5000';
+const host = wx.host;//move to app.js
 const addr = {
   GET_NEW_AVG_SALARY: host + '/api/getNewAverageSalary', 
   ADD_AVG_SALARY_HITS: host + '/api/readAverageSalary'
@@ -15,7 +14,6 @@ module.exports = {
   
   get (url) {
     return new Promise((resolve, reject) => {
-      //console.log(url)
       wx.request({
         url: url,
         headers: {

@@ -1,8 +1,8 @@
 /**font**/
 @font-face {
     font-family: 'DIN';
-    src: url('https://technologycloud.cn/fonts/DIN.woff') format('woff');
-    font-weight: 700;
+    src:url('https://technologycloud.cn/fonts/DIN.woff2') format('woff2'),url('https://technologycloud.cn/fonts/DIN.woff') format('woff');
+    font-weight: 500;
     font-style: normal;
 }
 

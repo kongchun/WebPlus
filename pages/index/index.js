@@ -1,7 +1,7 @@
 //index.js
 //获取应用实例
 import F2 from '../../f2-canvas/lib/f2';
-const app = getApp()
+const app = getApp();
 import NumberAnimate from "../../utils/NumberAnimate";
 Page({
   data: {
@@ -10,7 +10,7 @@ Page({
     },
     requestData: null, // 异步请求获取的数据
     system: { windowHeight: 603, windowWidth:373},
-    salary: { month: '1', average: 0, read:0}
+    salary: { month: '--', average: 8000, read:0}
   },
   onLoad: function () {
     wx.pro.getSystemInfo().then(res=>{

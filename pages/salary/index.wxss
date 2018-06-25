@@ -1,1 +1,22 @@
 /* pages/salary/index.wxss */
+.header{
+  width:100%;
+  height:380rpx;
+  background-position: no-repeat;
+  background-color: #4F81F5;
+  background-size: 750rpx auto;
+  margin: 0 aoto;
+  text-align: center;
+  font-family:"微软雅黑";
+  color:white;
+}
+
+.header .title{
+  padding-top:80rpx;
+  font-size:28rpx;
+}
+.header .salary{
+  padding-top:30rpx;
+  font-size:90rpx;
+  font-family: DIN;
+}

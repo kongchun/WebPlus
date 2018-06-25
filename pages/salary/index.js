@@ -1,18 +1,20 @@
 // pages/salary/index.js
+const app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-  
+    host: wx.host,
+    salary: { month: '1', average: "8000.00", read: 0 }
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+ 
   },
 
   /**

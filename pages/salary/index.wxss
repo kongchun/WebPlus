@@ -1,4 +1,5 @@
 /* pages/salary/index.wxss */
+@import "/template/tech-table.wxss";
 .header{
   width:100%;
   height:380rpx;
@@ -19,4 +20,34 @@
   padding-top:30rpx;
   font-size:90rpx;
   font-family: DIN;
+}
+
+.chart-container{
+  height: 450rpx;
+  width: 650rpx;
+  margin: 0 auto;
+}
+ff-canvas {
+  width: 100%;
+  height: 100%;
+}
+.container{
+  background-color:#F6F6FA;
+}
+.card{
+  background-color:#FFF;
+  width:750rpx;
+  margin:10rpx auto;
+}
+.card_title{
+  border-left: 8rpx solid #21B9E2;
+  padding-left: 20rpx;
+  font-size: 30rpx;
+  font-weight: 700;
+  height: 38rpx;
+  line-height: 38rpx;
+  margin: 20rpx 0 10rpx 30rpx;
+}
+.hidden{
+  display: none;
 }

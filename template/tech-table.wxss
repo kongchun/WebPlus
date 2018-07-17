@@ -1,27 +1,68 @@
 /* template/tech-table.wxss */
 .tech-title{
   color: #818181;
-  margin: 10px 0 10px 0;
+  margin: 10rpx 0 10rpx 0;
 }
 .tech-table{
-  border:1px solid #DBDBDB;
+  font-size: 30rpx;
+  border:1rpx solid #DBDBDB;
   border-bottom:0;
-  margin: 5px auto;
+  margin: 20rpx auto;
 }
 .tech-tr{
-  border-bottom:1px solid #DBDBDB;
+  border-bottom:1rpx solid #DBDBDB;
 }
 .tech-td{
   display: inline-block;
 }
+.right-border{
+  border-right:1rpx solid #DBDBDB;
+}
 .tech-seq{
   display: inline-block;
-  border-right: 1px solid #DBDBDB;
-  width: 60px;
-  padding: 5px;
+  border-right: 1rpx solid #DBDBDB;
+  width: 60rpx;
+  padding: 5rpx;
+  height: 50rpx;
+  line-height: 50rpx;
 }
 .tech-name{
   display: inline-block;
-  width: 150px;
-  padding: 5px;
+  width: 130rpx;
+  padding: 5rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+}
+.tech-table{
+  width:700rpx;
+}
+.tech-td{
+  text-align: center;
+  width: 700rpx;
+}
+.tech-seq{
+  width: 90rpx;
+}
+.tech-name{
+  width:220rpx;
+}
+.tech-detail-table{
+  font-size: 30rpx;
+}
+.tech-detail-table .tech-seq{
+  border-right: 0;
+}
+.tech-detail-table .tech-name{
+  width: 180rpx;
+  padding: 5rpx;
+  border-left: 1px solid #DBDBDB;
+}
+.work-table{
+  font-size: 28rpx;
+}
+.work-table .col{
+  width: 100rpx;
+}
+.work-table .colm{
+  width: 570rpx;
 }

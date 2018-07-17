@@ -26,7 +26,7 @@ Page({
   },
   topagedetail: function(options){
     wx.navigateTo({
-      url: '../public/index?query=new'
+      url: '/pages/salary/index?data='+JSON.stringify(this.data.salary)
     })
   },
   getNewAverageSalary: function () {
@@ -53,10 +53,10 @@ Page({
           onComplete: () => {//完成回调函数
           }
         });
-        const key = res.data.year+'.'+res.data.month;
+        const key = salaryData.year + '.' + salaryData.month;
         wx.pro.getStorage(key).then(db=>{
         }).catch(e=>{
-          wx.api.post(wx.api.ADDR.ADD_AVG_SALARY_HITS, { year: res.data.year, month: res.data.month }).then(res => {
+          wx.api.post(wx.api.ADDR.ADD_AVG_SALARY_HITS, { year: res.data.salary.year, month: res.data.salary.month }).then(res => {
             if (!!res && 200 == res.statusCode && !!res.data) {
               if ((!!res.data.result && !!res.data.result.n && res.data.result.n > 0) || (!!res.data.n && res.data.n > 0)) {
                 wx.pro.setStorage(key,true);

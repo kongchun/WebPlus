@@ -19,4 +19,103 @@
   </view>
 </view>
 </template>
-
+<template name="tech-top-table">
+<view class='tech-table'>
+  <view class='tech-tr'>
+    <view class='tech-td'>
+      <view class='tech-seq'>序号</view>
+      <view class='tech-name right-border'>技能</view>
+      <view class='tech-seq'>序号</view>
+      <view class='tech-name'>技能</view>
+    </view>
+  </view>
+  <view wx:for="{{tableData.toprank}}" wx:key="{{seq}}" class='tech-tr' wx:if="{{index>=0 && index<10}}">
+    <view>
+      <view class='tech-td'>
+        <view class='tech-seq'>{{index+1}}</view>
+        <view class='tech-name right-border'>{{item.tech||'-'}}</view>
+        <view class='tech-seq'>{{index+10+1}}</view>
+        <view class='tech-name'>{{tableData.toprank[10+index].tech||'-'}}</view>
+      </view>
+    </view>
+  </view>
+</view>
+</template>
+<template name="tech-detail-table">
+<view class='tech-table tech-detail-table'>
+  <view class='tech-tr'>
+    <view class='tech-td'>
+      <view class='tech-seq'>序号</view>
+      <view wx:for="{{tableData.types}}" wx:key="{{seq}}" class='tech-name' wx:if="{{index>=0 && index<3}}">
+        {{item}}
+      </view>
+    </view>
+  </view>
+  <view wx:for="{{[0,1,2,3,4,5,6,7,8,9]}}" wx:key="{{seq}}" class='tech-tr' wx:if="{{idx>=0 && idx<10}}" wx:for-index="idx">
+    <view>
+      <view class='tech-td'>
+        <view class='tech-seq'>{{idx+1}}</view>
+        <view wx:for="{{tableData.types}}" wx:key="{{seq}}" class='tech-name' wx:if="{{index>=0 && index<3}}">
+          {{tableData.detailRank[index][idx].tech||'-'}}
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<view class='tech-table tech-detail-table'>
+  <view class='tech-tr'>
+    <view class='tech-td'>
+      <view class='tech-seq'>序号</view>
+      <view wx:for="{{tableData.types}}" wx:key="{{seq}}" class='tech-name' wx:if="{{index>=3 && index<6}}">
+        {{tableData.types[index]}}
+      </view>
+    </view>
+  </view>
+  <view wx:for="{{[0,1,2,3,4,5,6,7,8,9]}}" wx:key="{{seq}}" class='tech-tr' wx:if="{{idx>=0 && idx<10}}" wx:for-index="idx">
+    <view>
+      <view class='tech-td'>
+        <view class='tech-seq'>{{idx+1}}</view>
+        <view wx:for="{{tableData.types}}" wx:key="{{seq}}" class='tech-name' wx:if="{{index>=3 && index<6}}">
+          {{tableData.detailRank[index][idx].tech ||'-'}}
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+</template>
+<template name="work-table">
+<view class='tech-table work-table'>
+  <view class='tech-tr'>
+      <view class='tech-td'>
+        <view class='tech-seq col'>序号</view>
+        <view class='tech-name colm'>招聘企业</view>
+      </view>
+  </view>
+  <view wx:for="{{tableData.companyRank}}" wx:key="{{seq}}" class='tech-tr' wx:if="{{index>=0 && index<10}}">
+    <view >
+      <view class='tech-td'>
+        <view class='tech-seq col'>{{index+1}}</view>
+        <view class='tech-name colm'>{{item.company}}</view>
+      </view>
+    </view>
+  </view>
+</view>
+</template>
+<template name="job-table">
+<view class='tech-table work-table'>
+  <view class='tech-tr'>
+      <view class='tech-td'>
+        <view class='tech-seq col'>序号</view>
+        <view class='tech-name colm'>招聘企业</view>
+      </view>
+  </view>
+  <view wx:for="{{tableData.companyRank}}" wx:key="{{seq}}" class='tech-tr' wx:if="{{index>=0 && index<10}}">
+    <view >
+      <view class='tech-td'>
+        <view class='tech-seq col'>{{index+1}}</view>
+        <view class='tech-name colm'>{{item.company}}</view>
+      </view>
+    </view>
+  </view>
+</view>
+</template>

@@ -3,6 +3,8 @@
 const host = wx.host;//move to app.js
 const addr = {
   GET_NEW_AVG_SALARY: host + '/api/getNewAverageSalary', 
+  GET_CHARTS_SALARY_INFO: host + '/api/getChartsSalaryInfo',
+  DATA_STATISTICS:host + '/api/dataStatistics',
   ADD_AVG_SALARY_HITS: host + '/api/readAverageSalary'
 };
 var serverHost = host+'/client';

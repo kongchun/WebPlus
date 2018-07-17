@@ -15,7 +15,7 @@ Page({
     },
     requestData: null, // 异步请求获取的数据
     system: { windowHeight: 603, windowWidth: 373 },
-    salary: { month: '1', average: "8000.00", read: 0 },
+    salary: { month: '-', average: "--", read: 0 },
     tableData:{}
   },
 
@@ -23,9 +23,13 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    if(!!options.data){
+    if(!!!options.data){
       let salary = JSON.parse(options.data);
       this.setData({salary});
+    }else{
+      wx.pro.getStorage('salaryData').then(salary=>{
+        this.setData({ salary });
+      })
     }
     wx.pro.getSystemInfo().then(res => {
       this.setData({ system: res });
@@ -78,7 +82,11 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-  
+    const salary = this.data.salary;
+    return {
+      title: salary.month + ' 月薪资报告',
+      desc: '基于薪酬大数据统计'
+    };
   },
 
   initChart: function(){

@@ -160,5 +160,15 @@ Page({
       this.chart = chart;
       return chart;
     });
-  }
+  },
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function (res) {
+    const salary = this.data.salary;
+    return {
+      title: salary.month + ' 月薪资报告',
+      desc: '基于薪酬大数据统计'
+    };
+  },
 })

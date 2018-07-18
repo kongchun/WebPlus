@@ -5,7 +5,7 @@
 <view class='tech-table'>
   <view wx:for="{{techdata}}" wx:key="{{seq}}" class='tech-tr'>
     <view wx:if="{{0==index}}">
-      <view class='tech-td'>
+      <view class='tech-td tech-title'>
         <view class='tech-seq'>序号</view>
         <view class='tech-name'>技能</view>
       </view>
@@ -22,7 +22,7 @@
 <template name="tech-top-table">
 <view class='tech-table'>
   <view class='tech-tr'>
-    <view class='tech-td'>
+    <view class='tech-td tech-title'>
       <view class='tech-seq'>序号</view>
       <view class='tech-name right-border'>技能</view>
       <view class='tech-seq'>序号</view>
@@ -44,7 +44,7 @@
 <template name="tech-detail-table">
 <view class='tech-table tech-detail-table'>
   <view class='tech-tr'>
-    <view class='tech-td'>
+    <view class='tech-td tech-title'>
       <view class='tech-seq'>序号</view>
       <view wx:for="{{tableData.types}}" wx:key="{{seq}}" class='tech-name' wx:if="{{index>=0 && index<3}}">
         {{item}}
@@ -64,7 +64,7 @@
 </view>
 <view class='tech-table tech-detail-table'>
   <view class='tech-tr'>
-    <view class='tech-td'>
+    <view class='tech-td tech-title'>
       <view class='tech-seq'>序号</view>
       <view wx:for="{{tableData.types}}" wx:key="{{seq}}" class='tech-name' wx:if="{{index>=3 && index<6}}">
         {{tableData.types[index]}}
@@ -86,7 +86,7 @@
 <template name="work-table">
 <view class='tech-table work-table'>
   <view class='tech-tr'>
-      <view class='tech-td'>
+      <view class='tech-td tech-title'>
         <view class='tech-seq col'>序号</view>
         <view class='tech-name colm'>招聘企业</view>
       </view>
@@ -104,7 +104,7 @@
 <template name="job-table">
 <view class='tech-table work-table'>
   <view class='tech-tr'>
-      <view class='tech-td'>
+      <view class='tech-td tech-title'>
         <view class='tech-seq col'>序号</view>
         <view class='tech-name colm'>招聘企业</view>
       </view>

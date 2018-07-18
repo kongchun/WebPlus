@@ -41,8 +41,8 @@
 				{
 					"id": 1,
 					"name": "public",
-					"pathName": "pages/public/index",
-					"query": ""
+					"pathName": "pages/url/pubpage",
+					"query": "url=/pages/url/pubpage?url=https://mp.weixin.qq.com/s?__biz=MzIyMjE2ODEzNg==&mid=2658086983&idx=1&sn=3510e6a86ce1ff685d0e91a161a1e0c9&scene=19"
 				},
 				{
 					"id": 2,

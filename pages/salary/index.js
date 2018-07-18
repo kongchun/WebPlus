@@ -1,8 +1,11 @@
 // pages/salary/index.js
 import F2 from '../../f2-canvas/lib/f2';
 const app = getApp();
-const priceSort = { "<5K": 1, "5-8K": 2, "8-10K": 3, "10-15K": 4, ">20K": 5, "面议": 6 };
+const priceSort = { "面议": 0,  "<5K": 1, "5-8K": 2, "8-10K": 3, "10-15K": 4, "15-20K": 5, ">20K": 6};
 const yearSort = { "3年以下": 1, "3-5年": 2, "5-10年": 3, "不限": 4 };
+const eduSort = { "大专": 1, "本科": 2, "硕士": 3, "不限": 0 };
+const districtSort = { "工业园区": 1, "姑苏区": 2, "高新区": 3, "吴中区": 4, "相城区": 5, "吴江区": 6, "苏州周边": 7 }
+
 Page({
 
   /**
@@ -127,10 +130,10 @@ Page({
     wx.api.get(wx.api.ADDR.GET_CHARTS_SALARY_INFO).then(res => {
       if (!!res && 200 == res.statusCode && !!res.data) {
         let data = res.data;
-        this.districtChart(data.districtRange);
+        this.districtChart(this.sortFilter(districtSort,data.districtRange));
         this.radialChart(this.toPieChart(this.sortFilter(priceSort, data.salaryRange)));
         this.circleChart(this.toPieChart(this.sortFilter(yearSort, data.yearRange)));
-        this.levelChart(data.eduRange);
+        this.levelChart((this.sortFilter(eduSort,data.eduRange)));
         // this.pieChart(this.toPieChart(this.sortFilter(priceSort, data.salaryRange)));
         wx.hideNavigationBarLoading();
       }
@@ -199,6 +202,7 @@ Page({
       });
       // Step 2: 载入数据源
       chart.source(data);
+      chart.legend(false);
       // Step 3：创建图形语法，绘制柱状图，由 genre 和 sold 两个属性决定图形位置，genre 映射至 x 轴，sold 映射至 y 轴
       chart.interval().position('label*count').color('label');
       // Step 4: 渲染图表
@@ -361,18 +365,18 @@ Page({
       });
 
       chart.line().position('key*value').color('type', val => {
-        if (val === '薪资') {
-          return '#32933D';
-        }
+        // if (val === '薪资') {
+        //   return '#32933D';
+        // }
       });
 
       //chart.line().position('key*value').color("#32933D");
       chart.point().position('key*value').style({
         stroke: '#fff',
         lineWidth: 1
-      }).color("#32933D");
+      })//.color("#32933D");
 
-      chart.area().position('key*value').color("#32933D");
+      chart.area().position('key*value')//.color("#32933D");
       chart.render();
     });
   },
@@ -397,5 +401,10 @@ Page({
     dealData.data = data;
     dealData.pieMap = pieMap;
     return dealData;
+  },
+  toPage : function(){
+    wx.navigateTo({
+      url: '/pages/url/pubpage?url='+encodeURIComponent("https://mp.weixin.qq.com/mp/homepage?__biz=MzIyMjE2ODEzNg==&hid=12"),
+    })
   }
 })

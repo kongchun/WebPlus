@@ -13,7 +13,8 @@ Page({
    */
   onLoad: function (options) {
     if (!!options && !!options.url){
-      this.setData({ url: options.url});
+      console.log(options.url)
+      this.setData({ url: decodeURIComponent(options.url)});
     }else{
       wx.navigateBack({
       });

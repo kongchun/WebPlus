@@ -87,4 +87,17 @@
     <template is="job-table" data="{{tableData}}"/>
   </view>
 
+
+
+
+  <view class='aboutus'>
+    <view class='info'>
+      <text class='wechat_label'>微信号：</text>
+      <text class='wechat_public'>suzhou_web</text>
+    </view>
+    <view class='code'>
+      <cover-image src='{{host}}/images/wx/qrcode.jpg' style='width:160px;height:160px;'></cover-image>
+    </view>
+  </view>
+
 </view>

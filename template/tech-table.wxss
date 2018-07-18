@@ -1,13 +1,14 @@
 /* template/tech-table.wxss */
 .tech-title{
-  color: #818181;
-  margin: 10rpx 0 10rpx 0;
+  color: #222;
+  margin: 0;
+  font-weight: bold;
 }
 .tech-table{
-  font-size: 30rpx;
+  font-size: 28rpx;
   border:1rpx solid #DBDBDB;
   border-bottom:0;
-  margin: 20rpx auto;
+  margin: 40rpx auto;
 }
 .tech-tr{
   border-bottom:1rpx solid #DBDBDB;
@@ -31,6 +32,7 @@
   width: 130rpx;
   padding: 5rpx;
   height: 50rpx;
+  font-size: 26rpx;
   line-height: 50rpx;
 }
 .tech-table{

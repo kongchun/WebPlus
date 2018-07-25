@@ -2,13 +2,13 @@
 <view class="main" style='width:{{system.windowWidth}}px;height:{{system.windowHeight}}px;'>
   <view class='panel' style="padding-top:{{(system.windowHeight>667)?(system.windowHeight-667)/4:0}}rpx">
     <view class='title' style='width:{{system.windowWidth-40}}px;'>
-      <text class='label-begin'>薪资报告</text>
+      <text class='label-begin'>前端报告</text>
       <view class='time'>
         <text class='month'>{{salary.month}}</text>
         <text class='label-end'>月</text>
       </view>
       <view class='sub-title' style='width:{{system.windowWidth-40}}px;'>
-        <text>基于薪酬大数据统计</text>
+        <text>基于前端大数据统计</text>
       </view>
     </view>
 
@@ -21,7 +21,7 @@
       </view>
       <view class='avg-price'>
         <text class='amt'>{{salary.average}}</text>
-        <text class='unit'>元</text>
+        <text class='unit'></text>
       </view>
       <view class='avg-price-compare'>
         <text>{{salary.compare}}</text>

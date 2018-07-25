@@ -19,7 +19,9 @@ Page({
     requestData: null, // 异步请求获取的数据
     system: { windowHeight: 603, windowWidth: 373 },
     salary: { month: '-', average: "--", read: 0 },
-    tableData:{}
+    tableData:{},
+    salayCard:"hidden",
+    jobCard:"hidden"
   },
 
   /**
@@ -87,8 +89,8 @@ Page({
   onShareAppMessage: function () {
     const salary = this.data.salary;
     return {
-      title: salary.month + ' 月薪资报告',
-      desc: '基于薪酬大数据统计'
+      title: salary.month + ' 月前端报告',
+      desc: '基于前端大数据统计'
     };
   },
 
@@ -103,8 +105,18 @@ Page({
       if (!!res && 200 == res.statusCode && !!res.data) {
         let data = res.data;
         if (!!data) {
-          console.log(data); 
-          this.setData({ tableData: data });
+          var salayCard = "hidden";
+          var jobCard = "hidden";
+          if (data.companyRank != null && data.companyRank.length > 0) {
+            salayCard=""
+          }
+          if (data.jobRank != null && data.jobRank.length > 0) {
+            jobCard = ""
+          }
+          this.setData({ tableData: data, salayCard: salayCard, jobCard: jobCard});
+
+ 
+          
         }
       }
     }).catch(e => {
@@ -343,26 +355,28 @@ Page({
       chart.tooltip({
         custom: true, // 自定义 tooltip 内容框
         onChange(obj) {
-          const legend = chart.get('legendController').legends.top[0];
-          const tooltipItems = obj.items;
-          const legendItems = legend.items;
-          const map = {};
-          legendItems.map(item => {
-            map[item.name] = Object.assign({}, item);
-          });
-          tooltipItems.map(item => {
-            const { name, value } = item;
-            if (map[name]) {
-              map[name].value = value + "元";
-            }
-          });
-          legend.setItems(Object.values(map));
+          // const legend = chart.get('legendController').legends.top[0];
+          // const tooltipItems = obj.items;
+          // const legendItems = legend.items;
+          // const map = {};
+          // legendItems.map(item => {
+          //   map[item.name] = Object.assign({}, item);
+          // });
+          // tooltipItems.map(item => {
+          //   const { name, value } = item;
+          //   if (map[name]) {
+          //     map[name].value = value + "元";
+          //   }
+          // });
+          // legend.setItems(Object.values(map));
         },
+      
         onHide() {
-          const legend = chart.get('legendController').legends.top[0];
-          legend.setItems(chart.getLegendItems().country);
+          // const legend = chart.get('legendController').legends.top[0];
+          // legend.setItems(chart.getLegendItems().country);
         }
       });
+      chart.legend(false);
 
       chart.line().position('key*value').color('type', val => {
         // if (val === '薪资') {

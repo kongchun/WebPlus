@@ -68,6 +68,11 @@ Page({
     })
   },
   loadChart:function(data){
+    data = data.map((t)=>{
+      t.type = "趋势报告";
+      return t;
+    })
+    
     if(!!!data || data.length<=0) return;
     this.chartComponent = this.selectComponent('#line-dom');
     this.chartComponent.init((canvas, width, height) => {
@@ -112,7 +117,7 @@ Page({
           tooltipItems.map(item => {
             const { name, value } = item;
             if (map[name]) {
-              map[name].value = value + "元";
+              map[name].value = value;
             }
           });
           legend.setItems(Object.values(map));
@@ -145,7 +150,7 @@ Page({
      
      
       chart.line().position('key*value').color('type', val => {
-        if (val === '薪资') {
+        if (val === '趋势报告') {
           return '#32933D';
         }
       });
@@ -167,8 +172,8 @@ Page({
   onShareAppMessage: function (res) {
     const salary = this.data.salary;
     return {
-      title: salary.month + ' 月薪资报告',
-      desc: '基于薪酬大数据统计'
+      title: salary.month + ' 月前端报告',
+      desc: '基于前端大数据统计'
     };
   },
 })

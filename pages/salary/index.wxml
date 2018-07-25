@@ -1,13 +1,13 @@
 <import src="/template/tech-table.wxml"/>
 <view class="container">
   <view class="header" style="background-image:url(\"{{host}}/images/wx/bg_info.png\"), linear-gradient(to bottom, #4f81f5 0%,#5b5ae2 100%);">
-    <view class="title"><text class='month'>{{salary.month}}</text>月苏州前端薪资(元)</view>
+    <view class="title"><text class='month'>{{salary.month}}</text>月苏州前端报告(元)</view>
     <view class="salary"><text class='average'>{{salary.average}}</text></view>
   </view>
 
   <view class='card'>
     <view class='card_title'>
-      <text>薪资走势</text>
+      <text>趋势分析</text>
     </view>
     <view class="chart-container" style="margin-top:{{(system.windowHeight>667)?(system.windowHeight-667)/2:0}}rpx">
       <ff-canvas id="salaryChart-dom" canvas-id="salaryChart-dom" opts="{{ opts }}"></ff-canvas>
@@ -16,7 +16,7 @@
 
   <view class='card'>
     <view class='card_title'>
-      <text>区域概况</text>
+      <text>区域分析</text>
     </view>
     <view class="chart-container" style="margin-top:{{(system.windowHeight>667)?(system.windowHeight-667)/2:0}}rpx">
       <ff-canvas id="districtChart-dom" canvas-id="districtChart-dom" opts="{{ opts }}"></ff-canvas>
@@ -25,7 +25,7 @@
 
   <view class='card'>
     <view class='card_title'>
-      <text>薪资占比</text>
+      <text>薪酬分析</text>
     </view>
     <view class="chart-container" style="margin-top:{{(system.windowHeight>667)?(system.windowHeight-667)/2:0}}rpx">
       <ff-canvas id="radialChart-dom" canvas-id="radialChart-dom" opts="{{ opts }}"></ff-canvas>
@@ -34,7 +34,7 @@
 
   <view class='card'>
     <view class='card_title'>
-      <text>年限概况</text>
+      <text>年限分析</text>
     </view>
     <view class="chart-container" style="margin-top:{{(system.windowHeight>667)?(system.windowHeight-667)/2:0}}rpx">
       <ff-canvas id="circleChart-dom" canvas-id="circleChart-dom" opts="{{ opts }}"></ff-canvas>
@@ -43,7 +43,7 @@
 
   <view class='card'>
     <view class='card_title'>
-      <text>学历概况</text>
+      <text>学历分析</text>
     </view>
     <view class="chart-container" style="margin-top:{{(system.windowHeight>667)?(system.windowHeight-667)/2:0}}rpx">
       <ff-canvas id="levelChart-dom" canvas-id="levelChart-dom" opts="{{ opts }}"></ff-canvas>
@@ -73,14 +73,14 @@
     <template is="tech-detail-table" data="{{tableData}}"/>
   </view>
 
-  <view class='card'>
+  <view class='card {{salayCard}}' >
     <view class='card_title'>
       <text>Top 10 前端平均薪酬最高</text>
     </view>
     <template is="work-table" data="{{tableData}}"/>
   </view>
 
-  <view class='card'>
+  <view class='card {{jobCard}}'>
     <view class='card_title'>
       <text>Top 10 前端岗位最多的企业</text>
     </view>

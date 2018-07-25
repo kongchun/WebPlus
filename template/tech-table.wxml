@@ -88,7 +88,7 @@
   <view class='tech-tr'>
       <view class='tech-td tech-title'>
         <view class='tech-seq col'>序号</view>
-        <view class='tech-name colm'>招聘企业</view>
+        <view class='tech-name colm'>企业名称</view>
       </view>
   </view>
   <view wx:for="{{tableData.companyRank}}" wx:key="{{seq}}" class='tech-tr' wx:if="{{index>=0 && index<10}}">
@@ -106,10 +106,10 @@
   <view class='tech-tr'>
       <view class='tech-td tech-title'>
         <view class='tech-seq col'>序号</view>
-        <view class='tech-name colm'>招聘企业</view>
+        <view class='tech-name colm'>企业名称</view>
       </view>
   </view>
-  <view wx:for="{{tableData.companyRank}}" wx:key="{{seq}}" class='tech-tr' wx:if="{{index>=0 && index<10}}">
+  <view wx:for="{{tableData.jobRank}}" wx:key="{{seq}}" class='tech-tr' wx:if="{{index>=0 && index<10}}">
     <view >
       <view class='tech-td'>
         <view class='tech-seq col'>{{index+1}}</view>

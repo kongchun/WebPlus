@@ -1,7 +1,9 @@
 {
   "pages": [
+    "pages/index/map",
     "pages/index/index",
     "pages/salary/index",
+    "pages/user/my",
     "pages/url/pubpage"
   ],
   "window": {
@@ -9,5 +11,35 @@
     "navigationBarBackgroundColor": "#4F81F5",
     "navigationBarTitleText": "前端Plus",
     "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "color": "#A2A2A2",
+    "selectedColor": "#5B8AF6",
+    "backgroundColor": "#FFFFFF",
+    "borderStyle": "white",
+    "position": "bottom",
+    "list": [
+      {
+        "pagePath": "pages/index/map",
+        "iconPath": "images/bar_map_black.png",
+        "selectedIconPath": "images/bar_map_blue.png",
+        "selectedText": "附近",
+        "text": "附近"
+      },
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "images/bar_report_black.png",
+        "selectedIconPath": "images/bar_report_blue.png",
+        "selectedText": "报告",
+        "text": "报告"
+      },
+      {
+        "pagePath": "pages/user/my",
+        "iconPath": "images/bar_my_black.png",
+        "selectedIconPath": "images/bar_my_blue.png",
+        "selectedText": "我的",
+        "text": "我的"
+      }
+    ]
   }
 }

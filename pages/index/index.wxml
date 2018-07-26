@@ -1,5 +1,5 @@
 <!--index.wxml-->
-<view class="main" style='width:{{system.windowWidth}}px;height:{{system.windowHeight}}px;'>
+<view class="main" style='width:{{system.windowWidth}}px;min-height:{{system.windowHeight}}px;'>
   <view class='panel' style="padding-top:{{(system.windowHeight>667)?(system.windowHeight-667)/4:0}}rpx">
     <view class='title' style='width:{{system.windowWidth-40}}px;'>
       <text class='label-begin'>前端报告</text>
@@ -35,8 +35,8 @@
     </view> 
 
     <view class='footer'>
-      <view class='detail-btn'>
-        <button bindtap='topagedetail'>查看报告详情</button>
+      <view class='detail-btn' bindtap='topagedetail'>
+        <button >查看报告详情</button>
       </view>
       <view class='read-history'>
         <text>{{salary.read||0}}人已查看</text>

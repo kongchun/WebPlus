@@ -13,7 +13,9 @@ Page({
     covers: [],
     circles: {},
     controls: [],
-    scale: 16,
+    scale: 14,
+    outData:{},
+    insideData:{}
   },
 
   /**
@@ -28,84 +30,36 @@ Page({
     //   this.setData({ latitude: location.latitude, longitude: location.longitude });
     // });
     wx.pro.getLocation({ type: 'gcj02', altitude: true }).then(location => {
-      console.log(location)
       let circles = [];
       let markers = [];
-      circles.push({
-        latitude: location.latitude,
-        longitude: location.longitude,
-        color: '#81A5FFAA',
-        fillColor: '#CBDEF2AA',
-        radius: 1500,
-        strokeWidth: 2,
-      });
-      circles.push({
-        latitude: location.latitude,
-        longitude: location.longitude,
-        color: '#81A5FFAA',
-        fillColor: '#AACBFCAA',
-        radius: 800,
-        strokeWidth: 2,
-      });
-
-      markers.push({
+      let outData = {};
+      let insideData = {};
+      let latitude = location.latitude;
+      let longitude = location.longitude;
+      let my = {
         id: -1,
         name: '我的位置',
-        latitude: location.latitude,
-        longitude: location.longitude,
+        latitude: latitude,
+        longitude: longitude,
         rotate: 0,
         iconPath: '/images/mysite.png',
         width: 30,
         height: 30,
         alpha: 0.9
+      };
+      wx.service.makeSurroundingSalaryData(latitude, longitude).then(d=>{
+        console.log(d)
+        circles = d.circles;
+        markers = d.markers;
+        outData = d.outData;
+        insideData = d.insideData;
+        markers.push(my);
+        this.setData({ circles, latitude: latitude, longitude: longitude, markers, outData, insideData });
+      }).catch(e=>{
+        markers.push(my);
+        this.setData({ circles, latitude: latitude, longitude: longitude, markers, outData, insideData });
       });
-      let i = 0;
-      markers.push({
-        id: ++i,
-        name: '我的位置',
-        latitude: location.latitude+0.005,
-        longitude: location.longitude,
-        rotate: 0,
-        iconPath: '/images/min_site.png',
-        width: 30,
-        height: 30,
-        alpha: 0.9,
-        callout: {
-          content: '6999.99元',
-          color: '#ffffff',
-          fontSize: 13,
-          borderRadius: 10,
-          padding: 5,
-          bgColor: '#1296DB'
-          ,display: 'ALWAYS'
-        }
-      });
-
-      markers.push({
-        id: ++i,
-        name: '我的位置',
-        latitude: location.latitude - 0.005,
-        longitude: location.longitude,
-        rotate: 0,
-        iconPath: '/images/max_site.png',
-        width: 30,
-        height: 30,
-        alpha: 0.9,
-        callout: {
-          content: '9999.99元',
-          color: '#ffffff',
-          fontSize: 13,
-          borderRadius: 10,
-          padding: 5,
-          bgColor: '#1296DB'
-          ,display: 'ALWAYS'
-        }
-      });
-
-      this.setData({ circles: circles, latitude: location.latitude, longitude: location.longitude, markers: markers });
     });
-
-    
   },
 
   /**

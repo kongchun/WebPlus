@@ -2,6 +2,8 @@
   "pages": [
     "pages/index/index",
     "pages/salary/index",
+    "pages/index/map",
+    "pages/user/my",
     "pages/url/pubpage"
   ],
   "window": {
@@ -10,4 +12,5 @@
     "navigationBarTitleText": "前端Plus",
     "navigationBarTextStyle": "white"
   }
+  
 }

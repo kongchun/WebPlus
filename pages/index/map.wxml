@@ -1,0 +1,15 @@
+<!--pages/index/map.wxml-->
+<map id="bmap" class="maps"  bindtap='maptap' longitude="{{longitude}}" latitude="{{latitude}}" markers="{{markers}}" covers="{{covers}}"  animation="{{mapAnimation}}"  
+   circles="{{circles}}" bindcontroltap="controltap" bindmarkertap="markertap" controls="{{controls}}" bindcallouttap="bindcallouttap"
+   scale="{{scale}}" style='width:750rpx;height:{{system.windowHeight}}px'>
+   <cover-view class='map_label_win'>
+    <cover-view>
+      <cover-view class='text outter'>███</cover-view>
+      <cover-view class='text desc'>{{outData.distance||'--'}}m：9768元</cover-view>
+    </cover-view>
+    <cover-view>
+      <cover-view class='text insider'>███</cover-view>
+      <cover-view class='text desc'>{{insideData.distance||'--'}}m：15768元</cover-view>
+    </cover-view>
+   </cover-view>
+</map>

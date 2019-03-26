@@ -12,7 +12,8 @@ function promisify() {
     'clearStorage',
     'getNetworkType',
     'getSystemInfo',
-    'chooseLocation'
+    'chooseLocation',
+    'getLocation'
   ]
 
   functionNames.forEach(fnName => {

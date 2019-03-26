@@ -7,7 +7,7 @@
 
   <view class='card'>
     <view class='card_title'>
-      <text>趋势分析</text>
+      <text>薪酬趋势</text>
     </view>
     <view class="chart-container" style="margin-top:{{(system.windowHeight>667)?(system.windowHeight-667)/2:0}}rpx">
       <ff-canvas id="salaryChart-dom" canvas-id="salaryChart-dom" opts="{{ opts }}"></ff-canvas>
@@ -16,7 +16,16 @@
 
   <view class='card'>
     <view class='card_title'>
-      <text>区域分析</text>
+      <text>薪酬年限</text>
+    </view>
+    <view class="chart-container" style="margin-top:{{(system.windowHeight>667)?(system.windowHeight-667)/2:0}}rpx">
+      <ff-canvas id="salaryYearAverage-dom" canvas-id="salaryYearAverage-dom" opts="{{ opts }}"></ff-canvas>
+    </view> 
+  </view>
+
+  <view class='card'>
+    <view class='card_title'>
+      <text>需求分布</text>
     </view>
     <view class="chart-container" style="margin-top:{{(system.windowHeight>667)?(system.windowHeight-667)/2:0}}rpx">
       <ff-canvas id="districtChart-dom" canvas-id="districtChart-dom" opts="{{ opts }}"></ff-canvas>
@@ -25,7 +34,7 @@
 
   <view class='card'>
     <view class='card_title'>
-      <text>薪酬分析</text>
+      <text>薪酬分布</text>
     </view>
     <view class="chart-container" style="margin-top:{{(system.windowHeight>667)?(system.windowHeight-667)/2:0}}rpx">
       <ff-canvas id="radialChart-dom" canvas-id="radialChart-dom" opts="{{ opts }}"></ff-canvas>
@@ -34,7 +43,7 @@
 
   <view class='card'>
     <view class='card_title'>
-      <text>年限分析</text>
+      <text>年限比例</text>
     </view>
     <view class="chart-container" style="margin-top:{{(system.windowHeight>667)?(system.windowHeight-667)/2:0}}rpx">
       <ff-canvas id="circleChart-dom" canvas-id="circleChart-dom" opts="{{ opts }}"></ff-canvas>

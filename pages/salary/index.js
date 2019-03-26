@@ -142,6 +142,8 @@ Page({
     wx.api.get(wx.api.ADDR.GET_CHARTS_SALARY_INFO).then(res => {
       if (!!res && 200 == res.statusCode && !!res.data) {
         let data = res.data;
+        console.log(data);
+        this.salaryYearAveragChart(this.sortFilter(yearSort, data.yearRange));
         this.districtChart(this.sortFilter(districtSort,data.districtRange));
         this.radialChart(this.toPieChart(this.sortFilter(priceSort, data.salaryRange)));
         this.circleChart(this.toPieChart(this.sortFilter(yearSort, data.yearRange)));
@@ -300,6 +302,47 @@ Page({
       chart.render();
     });
   },
+
+  salaryYearAveragChart: function (data) {
+    this.chartComponent = this.selectComponent('#salaryYearAverage-dom');
+    this.chartComponent.init((canvas, width, height) => {
+      const chart = new F2.Chart({
+        el: canvas,
+        width,
+        height
+      });
+      // Step 2: 载入数据源
+      //console.log(data)
+      chart.source(data);
+      chart.legend(false);
+      chart.axis("average",{
+        label: function label(text, index, total) {
+          return {text:(text/1000)+"K"};
+        }
+      });
+
+      // Step 3：创建图形语法，绘制柱状图，由 genre 和 sold 两个属性决定图形位置，genre 映射至 x 轴，sold 映射至 y 轴
+      chart.interval().position('label*average').color('label');
+
+      data.map(function (obj) {
+        chart.guide().text({
+          position: [obj.label, obj.average],
+          content: obj.average+"元",
+          style: {
+            fontSize: 11,
+            textAlign: 'center'
+          },
+          offsetY: -12
+        });
+      });
+
+      // Step 4: 渲染图表
+      chart.render();
+
+
+    });
+  },
+
   districtChart:function(data){
     this.chartComponent = this.selectComponent('#districtChart-dom');
     this.chartComponent.init((canvas, width, height) => {
@@ -378,11 +421,11 @@ Page({
       });
       chart.legend(false);
 
-      chart.line().position('key*value').color('type', val => {
-        // if (val === '薪资') {
-        //   return '#32933D';
-        // }
-      });
+      // chart.line().position('key*value').color('type', val => {
+      //   // if (val === '薪资') {
+      //   //   return '#32933D';
+      //   // }
+      // });
 
       //chart.line().position('key*value').color("#32933D");
       chart.point().position('key*value').style({
@@ -390,7 +433,8 @@ Page({
         lineWidth: 1
       })//.color("#32933D");
 
-      chart.area().position('key*value')//.color("#32933D");
+      chart.area().position('key*value').shape('smooth');//.color("#32933D");
+      chart.line().position('key*value').shape('smooth');
       chart.render();
     });
   },

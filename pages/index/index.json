@@ -1,7 +1,0 @@
-{
-  "enablePullDownRefresh": false,
-  "disableScroll":false,
-  "usingComponents": {
-    "ff-canvas": "../../f2-canvas/f2-canvas"
-  }
-}

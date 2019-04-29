@@ -1,5 +1,5 @@
 // pages/salary/index.js
-import F2 from '../../f2-canvas/lib/f2';
+import F2 from '@antv/wx-f2';
 const app = getApp();
 const priceSort = { "面议": 0,  "<5K": 1, "5-8K": 2, "8-10K": 3, "10-15K": 4, "15-20K": 5, ">20K": 6};
 const yearSort = { "3年以下": 1, "3-5年": 2, "5-10年": 3, "不限": 4 };

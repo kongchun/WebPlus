@@ -3,7 +3,13 @@
   <view class="header" style="background-image:url(\"{{host}}/images/wx/bg_info.png\"), linear-gradient(to bottom, #4f81f5 0%,#5b5ae2 100%);">
     <view class="title"><text class='month'>{{salary.month}}</text>月苏州前端报告(元)</view>
     <view class="salary"><text class='average'>{{salary.average}}</text></view>
+    <view class='avg-price-compare'>
+        <text>{{salary.compare}} </text> 
+        <text wx:if="{{salary.per=='up'}}" class='per p_up'>↑</text>
+        <text wx:if="{{salary.per=='down'}}" class='per p_down'>↓</text>
+      </view>
   </view>
+
 
   <view class='card'>
     <view class='card_title'>
@@ -59,6 +65,15 @@
     </view> 
   </view>
 
+  <view class='card'>
+    <view class='card_title'>
+      <text>热门词汇</text>
+    </view>
+    <view class="chart-container" style="margin-top:{{(system.windowHeight>667)?(system.windowHeight-667)/2:0}}rpx">
+      <ff-canvas id="charChart-dom" canvas-id="charChart-dom" opts="{{ opts }}"></ff-canvas>
+    </view> 
+  </view>
+
   <view class='card hidden'>
     <view class='card_title'>
       <text>饼图</text>
@@ -67,7 +82,7 @@
       <ff-canvas id="pieChart-dom" canvas-id="pieChart-dom" opts="{{ opts }}"></ff-canvas>
     </view> 
   </view>
-
+  
   <view class='card'>
     <view class='card_title'>
       <text>Top20 技能总排行</text>
@@ -105,7 +120,8 @@
       <text class='wechat_public'>suzhou_web</text>
     </view>
     <view class='code'>
-      <cover-image src='{{host}}/images/wx/qrcode.jpg' style='width:160px;height:160px;'></cover-image>
+      <cover-image src='{{host}}/images/wx/qrcode.jpg' style='width:200rpx;height:200rpx;float:left;margin-right:20rpx' ></cover-image>
+      <cover-image src='{{host}}/images/wx/qrcode2.jpg' style='width:200rpx;height:200rpx;'></cover-image>
     </view>
   </view>
 

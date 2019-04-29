@@ -22,6 +22,16 @@
   font-family: DIN;
 }
 
+.header .avg-price-compare{
+    font-size: 28rpx;
+}
+.p_up{
+  color: rgb(218, 80, 114);
+}
+.p_down{
+  color: rgb(129, 241, 0);
+}
+
 .chart-container{
   height: 450rpx;
   width: 650rpx;
@@ -59,6 +69,7 @@ ff-canvas {
   font-size: 14px;
   line-height: 22.4px;
   margin-bottom:20rpx;
+  text-align: center;
 }
 .aboutus .info .wechat_public{
   color:rgb(96, 127, 166);

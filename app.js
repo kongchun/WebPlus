@@ -5,6 +5,7 @@ wx.host = "https://technologycloud.cn";
 wx.api = require('utils/api.js');
 wx.pro = require('utils/promisify.js');
 wx.service = require('utils/service.js');
+//https://unpkg.com/@antv/f2@3.3.9/dist/
 App({
   onLaunch: function () {
     // 展示本地存储能力

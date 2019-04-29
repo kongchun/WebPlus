@@ -1,18 +1,19 @@
 import EventEmitter from './EventEmitter.min.js'
 
 const CAPITALIZED_ATTRS_MAP = {
-  fillStyle: 'FillStyle',
   fontSize: 'FontSize',
-  globalAlpha: 'GlobalAlpha',  
   opacity: 'GlobalAlpha',
-  lineCap: 'LineCap',
-  lineJoin: 'LineJoin',
-  lineWidth: 'LineWidth',
   lineDash: 'LineDash',
-  miterLimit: 'MiterLimit',
-  strokeStyle: 'StrokeStyle',
-  //textAlign: 'TextAlign',
-  textBaseline: 'TextBaseline'
+  textAlign: 'TextAlign',
+};
+
+/**
+ * wxapp textAlign align 可选值为 left|center|right
+ * 标准canvas textAlign align 可选值为 left|center|right|start|end
+ */
+const TEXT_ALIGN_MAP = {
+  'start': 'left',
+  'end': 'right',
 };
 
 export default class Renderer extends EventEmitter {
@@ -34,6 +35,9 @@ export default class Renderer extends EventEmitter {
     Object.keys(CAPITALIZED_ATTRS_MAP).map(style => {
       Object.defineProperty(wxCtx, style, {
         set: value => {
+          if (style == "textAlign") {
+            value = TEXT_ALIGN_MAP[value] ? TEXT_ALIGN_MAP[value] : value;
+          }
           const name = 'set' + CAPITALIZED_ATTRS_MAP[style];
           wxCtx[name](value);
         }

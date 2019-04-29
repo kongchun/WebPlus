@@ -1,8 +1,6 @@
 {
   "pages": [
-    "pages/index/index",
     "pages/salary/index",
-    "pages/index/map",
     "pages/user/my",
     "pages/url/pubpage"
   ],
@@ -11,6 +9,6 @@
     "navigationBarBackgroundColor": "#4F81F5",
     "navigationBarTitleText": "前端Plus",
     "navigationBarTextStyle": "white"
-  }
-  
+  },
+  "sitemapLocation": "sitemap.json"
 }

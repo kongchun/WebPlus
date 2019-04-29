@@ -27,15 +27,10 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-    if(!!!options.data){
-      let salary = JSON.parse(options.data);
-      this.setData({salary});
-    }else{
-      wx.pro.getStorage('salaryData').then(salary=>{
+  onLoad: function () {
+    wx.pro.getStorage('salaryData').then(salary=>{
         this.setData({ salary });
-      })
-    }
+    })
     wx.pro.getSystemInfo().then(res => {
       this.setData({ system: res });
     });
@@ -114,9 +109,6 @@ Page({
             jobCard = ""
           }
           this.setData({ tableData: data, salayCard: salayCard, jobCard: jobCard});
-
- 
-          
         }
       }
     }).catch(e => {
@@ -148,6 +140,7 @@ Page({
         this.radialChart(this.toPieChart(this.sortFilter(priceSort, data.salaryRange)));
         this.circleChart(this.toPieChart(this.sortFilter(yearSort, data.yearRange)));
         this.levelChart((this.sortFilter(eduSort,data.eduRange)));
+        //this.charChart();
         // this.pieChart(this.toPieChart(this.sortFilter(priceSort, data.salaryRange)));
         wx.hideNavigationBarLoading();
       }
@@ -460,6 +453,96 @@ Page({
     dealData.pieMap = pieMap;
     return dealData;
   },
+
+  charChart:function(){
+    var Util = F2.Util;
+    // 获取 text 文本的图形属性
+    function getTextAttrs(cfg) {
+      return Util.mix({}, {
+        fillOpacity: cfg.opacity,
+        fontSize: cfg.origin._origin.size,
+        rotate: cfg.origin._origin.rotate * Math.PI / 180,
+        text: cfg.origin._origin.text,
+        textAlign: 'center',
+        fontFamily: cfg.origin._origin.font,
+        fill: cfg.color,
+        textBaseline: 'Alphabetic'
+      }, cfg.style);
+    }
+
+    // 给point注册一个词云的shape
+    F2.Shape.registerShape('point', 'cloud', {
+      draw: function draw(cfg, container) {
+        var attrs = getTextAttrs(cfg);
+        var x = cfg.x;
+        var y = this._coord.y.start - cfg.y;
+        return container.addShape('text', {
+          attrs: Util.mix(attrs, {
+            x: x,
+            y: y
+          })
+        });
+      }
+    });
+
+
+    this.chartComponent = this.selectComponent('#charChart-dom');
+    this.chartComponent.init((canvas, width, height) => {
+      var dv = new DataSet.View().source(data);
+      var range = dv.range('value');
+      var min = range[0];
+      var max = range[1];
+      var MAX_FONTSIZE = 36; // 最大的字体
+      var MIN_FONTSIZE = 12; // 最小的字体
+      var canvasWidth = width; // 获取画布宽度
+      var canvasHeight = height; // 获取画布高度
+      // 生成词云的布局
+      dv.transform({
+        type: 'tag-cloud',
+        fields: ['x', 'value'],
+        size: [canvasWidth, canvasHeight], // 同 canvas 画布保持一致
+        font: 'Verdana',
+        padding: 0,
+        timeInterval: 5000, // max execute time
+        rotate: function rotate() {
+          var random = ~~(Math.random() * 4) % 4;
+          if (random == 2) {
+            random = 0;
+          }
+          return random * 90; // 0, 90, 270
+        },
+        fontSize: function fontSize(d) {
+          if (d.value) {
+            return (d.value - min) / (max - min) * (MAX_FONTSIZE - MIN_FONTSIZE) + MIN_FONTSIZE;
+          }
+          return 0;
+        }
+      });
+
+      var chart = new F2.Chart({
+        id: canvas,
+        padding: 0,
+        pixelRatio: window.devicePixelRatio
+      });
+      chart.source(dv.rows, {
+        x: {
+          nice: false
+        },
+        y: {
+          nice: false
+        }
+      });
+      chart.legend(false);
+      chart.axis(false);
+      chart.tooltip(false);
+
+      chart.point().position('x*y').color('category').shape('cloud');
+      chart.render();
+    });
+
+
+  },
+
   toPage : function(){
     wx.navigateTo({
       url: '/pages/url/pubpage?url='+encodeURIComponent("https://mp.weixin.qq.com/mp/homepage?__biz=MzIyMjE2ODEzNg==&hid=12"),

@@ -11,7 +11,7 @@
 		"nodeModules": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.2.4",
+	"libVersion": "2.6.6",
 	"appid": "wxf915b827833162a1",
 	"projectname": "%E5%89%8D%E7%AB%AFPlus",
 	"isGameTourist": false,

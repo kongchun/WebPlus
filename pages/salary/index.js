@@ -13,6 +13,7 @@ Page({
    */
   data: {
     host: wx.host,
+    qcodes: [wx.host + '/images/wx/qrcode.jpg', wx.host +'/images/wx/qrcode2.jpg'],
     opts: {
       lazyLoad: true // 延迟加载组件
     },
@@ -528,6 +529,14 @@ Page({
   toPage : function(){
     wx.navigateTo({
       url: '/pages/url/pubpage?url='+encodeURIComponent("https://mp.weixin.qq.com/mp/homepage?__biz=MzIyMjE2ODEzNg==&hid=12"),
+    })
+  },
+
+  showCodeTap: function(event){
+    let curr = event.currentTarget.dataset.code || this.data.qcodes[0];
+    wx.previewImage({
+      current: curr,
+      urls: this.data.qcodes,
     })
   }
 })

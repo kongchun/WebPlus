@@ -34,7 +34,7 @@
 
 .chart-container{
   height: 450rpx;
-  width: 650rpx;
+  width: 700rpx;
   margin: 0 auto;
 }
 ff-canvas {

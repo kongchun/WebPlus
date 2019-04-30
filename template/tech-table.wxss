@@ -36,17 +36,17 @@
   line-height: 50rpx;
 }
 .tech-table{
-  width:700rpx;
+  width:650rpx;
 }
 .tech-td{
   text-align: center;
-  width: 700rpx;
+  width:650rpx;
 }
 .tech-seq{
   width: 90rpx;
 }
 .tech-name{
-  width:220rpx;
+  width:200rpx;
 }
 .tech-detail-table{
   font-size: 30rpx;
@@ -55,15 +55,15 @@
   border-right: 0;
 }
 .tech-detail-table .tech-name{
-  width: 180rpx;
-  padding: 5rpx;
+  width: 170rpx;
+  padding: 4rpx;
   border-left: 1px solid #DBDBDB;
 }
 .work-table{
   font-size: 28rpx;
 }
 .work-table .col{
-  width: 100rpx;
+  width: 60rpx;
 }
 .work-table .colm{
   width: 570rpx;

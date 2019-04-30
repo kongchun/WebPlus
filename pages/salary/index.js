@@ -1,5 +1,7 @@
 // pages/salary/index.js
 import F2 from '@antv/wx-f2';
+const salaryService = require('../../service/salaryService.js');
+
 const app = getApp();
 const priceSort = { "面议": 0,  "<5K": 1, "5-8K": 2, "8-10K": 3, "10-15K": 4, "15-20K": 5, ">20K": 6};
 const yearSort = { "3年以下": 1, "3-5年": 2, "5-10年": 3, "不限": 4 };
@@ -29,9 +31,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function () {
-    wx.pro.getStorage('salaryData').then(salary=>{
-        this.setData({ salary });
-    })
     wx.pro.getSystemInfo().then(res => {
       this.setData({ system: res });
     });
@@ -118,24 +117,19 @@ Page({
     });;
   },
   getNewAverageSalary : function(){
-    wx.api.get(wx.api.ADDR.GET_NEW_AVG_SALARY).then(res => {
-      if (!!res && 200 == res.statusCode && !!res.data) {
-        let salaryData = res.data.salary;
-        this.salaryChart(res.data.arr || []);
-        if (!!salaryData){
-          this.setData({ salary: salaryData });
-        }
-      }
-    }).catch(e => {
-      wx.hideNavigationBarLoading();
-      console.log(e);
+      salaryService.getAverageSalary().then(({monthSalary, latestSalary})=>{
+        this.salaryChart(monthSalary);
+        this.setData({ salary: latestSalary });
+      }).catch(e => {
+        wx.hideNavigationBarLoading();
+        console.log(e);
     });
   },
+  
   getChartsSalaryInfo: function(){
     wx.api.get(wx.api.ADDR.GET_CHARTS_SALARY_INFO).then(res => {
       if (!!res && 200 == res.statusCode && !!res.data) {
         let data = res.data;
-        console.log(data);
         this.salaryYearAveragChart(this.sortFilter(yearSort, data.yearRange));
         this.districtChart(this.sortFilter(districtSort,data.districtRange));
         this.radialChart(this.toPieChart(this.sortFilter(priceSort, data.salaryRange)));

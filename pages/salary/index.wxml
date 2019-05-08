@@ -69,6 +69,7 @@
     <view class='card_title'>
       <text>热门词汇</text>
     </view>
+    
     <view class="chart-container" style="margin-top:{{(system.windowHeight>667)?(system.windowHeight-667)/2:0}}rpx">
       <ff-canvas id="charChart-dom" canvas-id="charChart-dom" opts="{{ opts }}"></ff-canvas>
     </view> 

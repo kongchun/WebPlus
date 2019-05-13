@@ -121,9 +121,14 @@ Page({
   },
 
   getTechCloudInfo:function(){
-    var data =[];
-    this.charChart(data);
-    wx.hideNavigationBarLoading();
+    salaryService.getTechCloudInfo().then((data)=>{
+      this.charChart(data);
+      wx.hideNavigationBarLoading();
+    }).catch(e => {
+      wx.hideNavigationBarLoading();
+      console.log(e);
+    });
+
   },
   
   getChartsSalaryInfo: function(){
@@ -141,6 +146,8 @@ Page({
   },
 
   pieChart: function (data) {
+
+
     this.chartComponent = this.selectComponent('#pieChart-dom');
     this.chartComponent.init((canvas, width, height) => {
       const chart = new F2.Chart({
@@ -192,6 +199,10 @@ Page({
   },
   levelChart: function (data) {
     this.chartComponent = this.selectComponent('#levelChart-dom');
+
+   
+
+
     this.chartComponent.init((canvas, width, height) => {
       const chart = new F2.Chart({
         el: canvas,
@@ -424,16 +435,43 @@ Page({
   },
 
   charChart:function(data){
+    var Util = F2.Util;
+    // 获取 text 文本的图形属性
+    function getTextAttrs(cfg) {
+      return Util.mix({}, {
+        fillOpacity: cfg.opacity,
+        fontSize: cfg.origin._origin.size,
+        rotate: cfg.origin._origin.rotate * Math.PI / 180,
+        text: cfg.origin._origin.text,
+        textAlign: 'center',
+        fontFamily: cfg.origin._origin.font,
+        fill: cfg.color,
+        textBaseline: 'Alphabetic'
+      }, cfg.style);
+    }
 
+    // 给point注册一个词云的shape
+    F2.Shape.registerShape('point', 'cloud', {
+      draw: function draw(cfg, container) {
+        var attrs = getTextAttrs(cfg);
+        var x = cfg.x;
+        var y = this._coord.y.start - cfg.y;
+        return container.addShape('text', {
+          attrs: Util.mix(attrs, {
+            x: x,
+            y: y
+          })
+        });
+      }
+    });
     this.chartComponent = this.selectComponent('#charChart-dom');
     this.chartComponent.init((canvas, width, height) => {
     
-
+     
       data = data.map((t)=>{
         t.x = t.x/375*width;
         t.y = t.y/260*height;
         t.size = t.size? parseInt(t.size*.75):0;
-        console.log(t.size);
         return t;
       })
 
@@ -455,7 +493,7 @@ Page({
       chart.axis(false);
       chart.tooltip(false);
 
-      chart.point().position('x*y').color('category').shape('cloud');
+      chart.point().position('x*y').color('type').shape('cloud');
       chart.render();
     });
 
@@ -477,32 +515,3 @@ Page({
   }
 })
 
-var Util = F2.Util;
-// 获取 text 文本的图形属性
-function getTextAttrs(cfg) {
-  return Util.mix({}, {
-    fillOpacity: cfg.opacity,
-    fontSize: cfg.origin._origin.size,
-    rotate: cfg.origin._origin.rotate * Math.PI / 180,
-    text: cfg.origin._origin.text,
-    textAlign: 'center',
-    fontFamily: cfg.origin._origin.font,
-    fill: cfg.color,
-    textBaseline: 'Alphabetic'
-  }, cfg.style);
-}
-
-// 给point注册一个词云的shape
-F2.Shape.registerShape('point', 'cloud', {
-  draw: function draw(cfg, container) {
-    var attrs = getTextAttrs(cfg);
-    var x = cfg.x;
-    var y = this._coord.y.start - cfg.y;
-    return container.addShape('text', {
-      attrs: Util.mix(attrs, {
-        x: x,
-        y: y
-      })
-    });
-  }
-});

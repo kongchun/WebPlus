@@ -6,7 +6,8 @@ const addr = {
   GET_CHARTS_SALARY_INFO: host + '/api/getChartsSalaryInfo',
   GET_TOP_TECH: host + '/api/getTopTech',
   DATA_STATISTICS:host + '/api/dataStatistics',
-  ADD_AVG_SALARY_HITS: host + '/api/readAverageSalary'
+  ADD_AVG_SALARY_HITS: host + '/api/readAverageSalary',
+  GET_TAG_CLOUD: host + '/api/getTagCloud'
 };
 var serverHost = host+'/client';
 var fileHost = host+'/upload';

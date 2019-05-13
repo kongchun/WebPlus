@@ -59,14 +59,17 @@ class SalaryService {
       let circleChartData = this.toPieChart(this.sortFilter(yearSort, data.yearRange));
       let levelChartData = this.sortFilter(eduSort, data.eduRange);
 
-      cache.set("chartsSalaryInfo", {
+      chartsSalaryInfo = {
         salaryYearAveragChartData,
         districtChartData,
         radialChartData,
         circleChartData,
         levelChartData
-      });
+      }
+      cache.set("chartsSalaryInfo", chartsSalaryInfo);
+      
     }
+
     return chartsSalaryInfo;
   }
 
@@ -78,6 +81,15 @@ class SalaryService {
       cache.set("dataStatistics", dataStatistics);
     }
     return dataStatistics;
+  }
+
+  async getTechCloudInfo(){
+    let techCloudTag = cache.get("techCloudTag", EXP_TIME);
+    if (!techCloudTag) {
+      techCloudTag = await this.requestDataByURL(wx.api.ADDR.GET_TAG_CLOUD);
+      cache.set("techCloudTag", techCloudTag);
+    }
+    return techCloudTag;
   }
 
 

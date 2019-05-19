@@ -1,0 +1,125 @@
+/* pages/company/ranking/index.wxss */
+page {
+  background: #f7f8fa;
+  background-image: linear-gradient(135deg, #4F81F5, #5b5ae2);
+}
+
+.rank__list {
+  padding: 0 30rpx 30rpx;
+}
+
+.rank__item {
+  width: 690rpx;
+  padding: 30rpx 0;
+  border-bottom: 1rpx dashed #ddd;
+  position: relative;
+  display: flex;
+  background-color: #fff;
+  color: #333333;
+}
+
+.rank__item--first {
+  padding: 30rpx;
+  text-align: center;
+  overflow: hidden;
+  background-color: rgba(142, 185, 245, .52);
+  color: #8EB9F5;
+  border: 0;
+  flex-direction: column;
+}
+
+.rank__item--last {
+  border-bottom: 0;
+}
+
+.rank__no {
+  width: 80rpx;
+  font-size: 30rpx;
+  font-weight: bold;
+  text-align: center;
+  color: #8EB9F5;
+}
+
+.no__1{
+  color: #F54545;
+}
+
+.no__2{
+  color: #FF8547;
+}
+
+.no__3{
+  color: #FFAC38;
+}
+
+.rank__icon {
+  width: 80rpx;
+  height: 80rpx;
+  background: #f3f3f3;
+}
+
+.rank__icon--first {
+  border-radius: 50%;
+  margin: 0 auto 10rpx;
+  animation: rank__icon--first 20s infinite linear;
+}
+
+@keyframes rank__icon--first {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.rank__info {
+  width: 540rpx;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 0 30rpx;
+}
+
+.rank__comp {
+  width: 470rpx;
+  font-size: 25rpx;
+  overflow: hidden;
+}
+
+.rank__name {
+  width: 400rpx;
+  padding-top: 5rpx;
+  font-size: 25rpx;
+  font-weight: bold;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  float: left;
+}
+
+.rank__score {
+  font-size: 30rpx;
+  color: #FFF;
+  font-weight: bolder;
+  overflow: hidden;
+  height: 38rpx;
+  float: right;
+  background-color: #FF664F;
+  border:0rpx solid orangered;
+  padding: 0 8rpx 2rpx 6rpx;
+}
+
+.rank__detail {
+  width: 100%;
+  font-size: 25rpx;
+  word-break: break-all;
+  word-wrap: break-word;
+}
+
+.rank__tip {
+  text-align: center;
+  font-size: 28rpx;
+  color: #FFF;
+  padding: 0 30rpx 30rpx;
+}

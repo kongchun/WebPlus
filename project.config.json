@@ -6,12 +6,19 @@
 		"postcss": true,
 		"minified": true,
 		"newFeature": true,
+		"nodeModules": true,
 		"autoAudits": false,
 		"checkInvalidKey": true,
-		"nodeModules": true
+		"checkSiteMap": true,
+		"uploadWithSourceMap": true,
+		"babelSetting": {
+			"ignore": [],
+			"disablePlugins": [],
+			"outputPath": ""
+		}
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.6.6",
+	"libVersion": "2.7.0",
 	"appid": "wxf915b827833162a1",
 	"projectname": "%E5%89%8D%E7%AB%AFPlus",
 	"isGameTourist": false,
@@ -35,7 +42,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": -1,
+			"current": 3,
 			"list": [
 				{
 					"id": -1,
@@ -54,6 +61,12 @@
 					"name": "salary",
 					"pathName": "pages/salary/index",
 					"query": "data={\"month\":\"6\",\"average\":9712.07,\"read\":3,\"compare\":\"同比下降0.5%\",\"per\":\"down\"}"
+				},
+				{
+					"id": -1,
+					"name": "公司排名",
+					"pathName": "pages/company/ranking/index",
+					"scene": null
 				}
 			]
 		}

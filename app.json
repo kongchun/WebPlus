@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/salary/index",
+    "pages/company/ranking/index",
     "pages/user/my",
     "pages/url/pubpage"
   ],

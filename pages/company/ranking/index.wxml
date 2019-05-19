@@ -1,0 +1,21 @@
+<!--pages/company/ranking/index.wxml-->
+<view class="rank" hidden="{{rankList.length <= 0}}">
+  <view class="rank__list">
+    <view class="rank__item {{index === rankList.length - 1 ? 'rank__item--last' : ''}}"
+          wx:for="{{rankList}}"
+          wx:for-item="rank"
+          wx:for-index="index"
+          wx:key="id">
+      <view class="rank__no no__{{index+1}}">{{index + 1}}</view>
+      <image lazy-load class="rank__icon {{index<3?'rank__icon--first':''}}" mode="aspectFill" src="{{rank.icon}}" />
+      <view class="rank__info">
+        <view class="rank__comp">
+          <view class="rank__name">{{rank.name}}</view>
+          <view class="rank__score">{{rank.score||'--'}}</view>
+        </view>
+        <view class="rank__detail">{{rank.detail}}</view>
+      </view>
+    </view>
+  </view>
+  <view class="rank__tip">{{copy}}</view>
+</view>

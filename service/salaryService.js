@@ -1,6 +1,6 @@
 import regeneratorRuntime from '../lib/regeneratorRuntime';
 const cache = require('../utils/cache.js');
-const EXP_TIME = 60*30;
+const EXP_TIME = 60;
 
 const priceSort = {
   "面议": 0,
@@ -83,6 +83,31 @@ class SalaryService {
     return dataStatistics;
   }
 
+  async getCompanyRankInfo(data) {
+    console.log(data);
+    let companyRank = data.companyRank.slice(0,10);
+    let jobRank = data.jobRank.slice(0, 10);
+    data.companyRank = await this.getCompanyListInfo(companyRank);
+    data.jobRank = await this.getCompanyListInfo(jobRank);
+    return data;
+  }
+
+  async getCompanyListInfo(data){
+    var names = data.map((i)=>{
+        return i.company;   
+    })
+    let alias = names.join(",");
+    let list = await this.getCompanyInfo(alias);
+    data.map((i,index)=>{
+      return Object.assign(i,list[index]);
+    })
+    return data;
+  }
+  async getCompanyInfo(alias){
+    let companyInfo = await this.postDataByURL(wx.api.ADDR.GET_COMPANY_INFO, { data: alias});
+    return companyInfo;
+  }
+
   async getTechCloudInfo(){
     let techCloudTag = cache.get("techCloudTag", EXP_TIME);
     if (!techCloudTag) {
@@ -145,7 +170,15 @@ class SalaryService {
     });
   }
 
-
+  async postDataByURL(url, data) {
+    return wx.api.post(url, data).then(res => {
+      if (!!res && 200 == res.statusCode && !!res.data) {
+        return res.data;
+      }
+    }).catch(e => {
+      console.log(e);
+    });
+  }
 }
 
 

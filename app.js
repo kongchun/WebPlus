@@ -5,11 +5,20 @@ wx.host = "https://technologycloud.cn";
 wx.api = require('utils/api.js');
 wx.pro = require('utils/promisify.js');
 wx.service = require('utils/service.js');
+const cache = require('utils/cache.js');
 //https://unpkg.com/@antv/f2@3.3.9/dist/
 App({
   onLaunch: function () {
     // 展示本地存储能力
     // 登录
+    var data = new Date();
+    let month = (data.getFullYear()+""+data.getMonth());
+    let lastMonth = cache.get("m");
+    if(lastMonth != month){
+      wx.clearStorageSync();
+      cache.set("m", month);
+    }
+    
     wx.login({
       success: res => {
         // 发送 res.code 到后台换取 openId, sessionKey, unionId

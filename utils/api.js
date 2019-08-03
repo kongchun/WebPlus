@@ -7,7 +7,8 @@ const addr = {
   GET_TOP_TECH: host + '/api/getTopTech',
   DATA_STATISTICS:host + '/api/dataStatistics',
   ADD_AVG_SALARY_HITS: host + '/api/readAverageSalary',
-  GET_TAG_CLOUD: host + '/api/getTagCloud'
+  GET_TAG_CLOUD: host + '/api/getTagCloud',
+  GET_COMPANY_INFO: host + '/api/getCompanyLogoAndScore',
 };
 var serverHost = host+'/client';
 var fileHost = host+'/upload';

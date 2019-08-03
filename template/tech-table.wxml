@@ -84,6 +84,25 @@
 </view>
 </template>
 <template name="work-table">
+  <view class="rank__list">
+    <view class="rank__item {{index === tableData.companyRank.length - 1 ? 'rank__item--last' : ''}}"
+          wx:for="{{tableData.companyRank}}"
+          wx:for-item="rank"
+          wx:for-index="index"
+          wx:key="id"
+          wx:if="{{index>=0 && index<10}}">
+      <view class="rank__no no__{{index+1}}">{{index + 1}}</view>
+      <image lazy-load class="rank__icon" src="{{rank.logo}}" />
+      <view class="rank__info">
+        <view class="rank__comp">
+          <view class="rank__name">{{rank.company}}</view>
+          <view class="rank__score">{{rank.score||'2.5'}}</view>
+        </view>
+        <view class="rank__detail">{{rank.disc}}</view>
+      </view>
+    </view>
+  </view>
+<!--
 <view class='tech-table work-table'>
   <view class='tech-tr'>
       <view class='tech-td tech-title'>
@@ -100,8 +119,28 @@
     </view>
   </view>
 </view>
+-->
 </template>
 <template name="job-table">
+  <view class="rank__list">
+    <view class="rank__item {{index === tableData.jobRank.length - 1 ? 'rank__item--last' : ''}}"
+          wx:for="{{tableData.jobRank}}"
+          wx:for-item="rank"
+          wx:for-index="index"
+          wx:key="id"
+          wx:if="{{index>=0 && index<10}}">
+      <view class="rank__no no__{{index+1}}">{{index + 1}}</view>
+      <image lazy-load class="rank__icon" src="{{rank.logo}}" />
+      <view class="rank__info">
+        <view class="rank__comp">
+          <view class="rank__name">{{rank.company}}</view>
+          <view class="rank__score">{{rank.score||'2.5'}}</view>
+        </view>
+        <view class="rank__detail">{{rank.detail}}</view>
+      </view>
+    </view>
+  </view>
+<!--
 <view class='tech-table work-table'>
   <view class='tech-tr'>
       <view class='tech-td tech-title'>
@@ -118,4 +157,5 @@
     </view>
   </view>
 </view>
+-->
 </template>

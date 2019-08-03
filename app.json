@@ -2,6 +2,7 @@
   "pages": [
     "pages/salary/index",
     "pages/company/ranking/index",
+    "pages/company/detail/index",
     "pages/user/my",
     "pages/url/pubpage"
   ],

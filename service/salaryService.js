@@ -108,11 +108,21 @@ class SalaryService {
     return companyInfo;
   }
 
+  async getCompanyInfoById(_id) {
+    let companyInfo = await this.postDataByURL(wx.api.ADDR.GET_COMPANY_BY_ID, { _id });
+    if (!companyInfo || !companyInfo['_id']){
+      return null;
+    }
+    return companyInfo;
+  }
+
   async getTechCloudInfo(){
     let techCloudTag = cache.get("techCloudTag", EXP_TIME);
     if (!techCloudTag) {
       techCloudTag = await this.requestDataByURL(wx.api.ADDR.GET_TAG_CLOUD);
-      cache.set("techCloudTag", techCloudTag);
+      if (!!techCloudTag && techCloudTag.length>0){
+        cache.set("techCloudTag", techCloudTag);
+      }
     }
     return techCloudTag;
   }

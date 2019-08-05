@@ -85,12 +85,12 @@
 </template>
 <template name="work-table">
   <view class="rank__list">
-    <view class="rank__item {{index === tableData.companyRank.length - 1 ? 'rank__item--last' : ''}}"
+    <view bindtap='viewCompanyDetail' class="rank__item {{index === tableData.companyRank.length - 1 ? 'rank__item--last' : ''}}"
           wx:for="{{tableData.companyRank}}"
           wx:for-item="rank"
           wx:for-index="index"
           wx:key="id"
-          wx:if="{{index>=0 && index<10}}">
+          wx:if="{{index>=0 && index<10}}" data-company="{{rank}}">
       <view class="rank__no no__{{index+1}}">{{index + 1}}</view>
       <image lazy-load class="rank__icon" src="{{rank.logo}}" />
       <view class="rank__info">
@@ -123,12 +123,12 @@
 </template>
 <template name="job-table">
   <view class="rank__list">
-    <view class="rank__item {{index === tableData.jobRank.length - 1 ? 'rank__item--last' : ''}}"
+    <view bindtap='viewCompanyDetail' class="rank__item {{index === tableData.jobRank.length - 1 ? 'rank__item--last' : ''}}"
           wx:for="{{tableData.jobRank}}"
           wx:for-item="rank"
           wx:for-index="index"
           wx:key="id"
-          wx:if="{{index>=0 && index<10}}">
+          wx:if="{{index>=0 && index<10}}" data-company="{{rank}}">
       <view class="rank__no no__{{index+1}}">{{index + 1}}</view>
       <image lazy-load class="rank__icon" src="{{rank.logo}}" />
       <view class="rank__info">

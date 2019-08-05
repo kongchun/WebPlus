@@ -18,7 +18,7 @@
 		}
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.7.0",
+	"libVersion": "2.8.0",
 	"appid": "wxf915b827833162a1",
 	"projectname": "%E5%89%8D%E7%AB%AFPlus",
 	"isGameTourist": false,
@@ -42,7 +42,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 3,
+			"current": 4,
 			"list": [
 				{
 					"id": -1,
@@ -66,6 +66,13 @@
 					"id": -1,
 					"name": "公司排名",
 					"pathName": "pages/company/ranking/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "公司详情",
+					"pathName": "pages/company/detail/index",
 					"scene": null
 				}
 			]

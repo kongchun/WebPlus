@@ -1,2 +1,65 @@
 <!--pages/company/detail/index.wxml-->
-<text>pages/company/detail/index.wxml</text>
+<view class='company-page'>
+<view class='c-head'>
+  <view class='c-head-left'>
+    <view class='company-name'>
+      <text>{{company.company}}</text>
+    </view>
+    <view class='company-info'>
+      <text>¥{{company.salaryLabel}}</text>
+      <text wx:if="{{!!company.city}}"> · </text>
+      <text>{{company.city}}</text>
+      <text wx:if="{{!!company.district}}"> · </text>
+      <text>{{company.district}}</text>
+    </view>
+  </view>
+  <view class='c-head-right'>
+    <image src='{{company.logo||"../../../images/logo_def.jpg"}}' mode='aspectFit' ></image>
+  </view>
+</view>
+<view class='c-container'>
+  <view class='c-label'>
+    <text>公司简介</text>
+  </view>
+  <view class='c-context bref'>
+    <rich-text nodes="{{company.description}}"></rich-text>
+  </view>
+    <view wx:if="{{!company.bref}}" class='showall' bindtap='showBrefAll'>
+      <text>查看全部</text>
+    </view>
+</view>
+<view class='d-line'></view>
+<view class='c-container'>
+  <view class='c-label'>
+    <text>公司评分</text>
+  </view>
+  <view class='c-context'>
+    <view class='company-pf'>
+      <view class='company-alias'>
+        <text>{{company.alias}}</text>
+      </view>
+      <view class='company-score'>
+        <text>{{company.score||'2.5'}}</text>
+      </view>
+    </view>
+  </view>
+</view>
+<view wx:if="{{!!company.addr}}" class='d-line'></view>
+<view wx:if="{{!!company.addr}}" class='c-container'>
+  <view class='c-label'>
+    <text>公司地址</text>
+  </view>
+  <view class='c-context'>
+    <view bindtap='getCompanyMap' class='company-addr'>
+      <view class='c-addr'>{{company.addr}}</view>
+      <view class='c-ico'>＞</view>
+    </view>
+  </view>
+</view>
+<view wx:if="{{!!company.source}}" class='d-line'></view>
+<view wx:if="{{!!company.source}}" class='c-container'>
+  <view class='c-context company-source'>
+    <text>以上数据来源自 {{company.source}}</text>
+  </view>
+</view>
+</view>

@@ -9,7 +9,15 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    map:{
+      speed: 0,//速度 
+      accuracy: 16,//位置精准度 
+      markers: [],
+      circles: {},
+      controls: [],
+      radius: 3000,
+      scale: 16,
+    }
   },
 
   /**
@@ -28,22 +36,34 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function() {
-
+    this.loadCompany();
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
+   
+  },
+
+  loadCompany:function(){
     salaryService.getCompanyInfoById(this._id).then(company => {
       let salaryLabel = company.salary;
       if (salaryLabel <= 0) {
         salaryLabel = 0;
       } else if (salaryLabel >= 1000) {
-        salaryLabel = salaryLabel / 1000 + 'k';
+        salaryLabel = salaryLabel / 1000 + 'K';
       }
       company.salaryLabel = salaryLabel;
-      company.description2 = html2json(company.description.replace(/\\n/g, '<br>'));
+      let description = company.description.replace(/(^\s*)|(\s*$)/g, "");
+      if (description.indexOf("\\n") > -1) {
+        description = description.replace(/\\n/ig, "<br>");
+      } else {
+        description = description.replace(/。\s/ig, "。<br>");
+      }
+
+      //console.log(description)
+      company.description2 = html2json(description);
       if (company.description2.length > 0) {
         company.description = [company.description2[0]];
       }
@@ -54,13 +74,37 @@ Page({
         company.description.push(company.description2[2]);
       }
       company.bref = false;
-      if (company.description2.length <= 3) {
+      if (company.description2.length <= 1) {
         company.bref = true;
       }
-      console.log(company);
+
+
+      company.position = this.Convert_BD09_To_GCJ02(company.position.lat, company.position.lng);
+
       this.setData({
         company
       });
+      this.formatMapData();
+    })
+  },
+
+  formatMapData: function () {
+    var markers = [];
+    var data = this.data.company;
+      markers.push({
+        latitude: data.position.lat,
+        longitude: data.position.lng,
+        rotate: 0,
+        //iconPath: '../../../images/icon/mark.png',
+        //width: 20,
+        //height: 20,
+        alpha: 0.9
+      });
+    
+    this.setData({
+      map: {
+        markers: markers
+      }
     })
   },
 
@@ -114,7 +158,7 @@ Page({
 
   getCompanyMap: function() {
     let company = this.data.company;
-    let position = this.Convert_BD09_To_GCJ02(company.position.lat, company.position.lng);
+    let position = company.position;
     wx.openLocation({
       latitude: position.lat,
       longitude: position.lng,

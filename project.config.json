@@ -70,9 +70,10 @@
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 4,
 					"name": "公司详情",
 					"pathName": "pages/company/detail/index",
+					"query": "_id=5d29c20bdf56e8330cbea06e",
 					"scene": null
 				}
 			]

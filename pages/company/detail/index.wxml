@@ -3,12 +3,10 @@
 <view class='c-head'>
   <view class='c-head-left'>
     <view class='company-name'>
-      <text>{{company.company}}</text>
+      <text>{{company.alias}}</text>
     </view>
     <view class='company-info'>
       <text>¥{{company.salaryLabel}}</text>
-      <text wx:if="{{!!company.city}}"> · </text>
-      <text>{{company.city}}</text>
       <text wx:if="{{!!company.district}}"> · </text>
       <text>{{company.district}}</text>
     </view>
@@ -17,6 +15,7 @@
     <image src='{{company.logo||"../../../images/logo_def.jpg"}}' mode='aspectFit' ></image>
   </view>
 </view>
+<view class="space"></view>
 <view class='c-container'>
   <view class='c-label'>
     <text>公司简介</text>
@@ -36,7 +35,7 @@
   <view class='c-context'>
     <view class='company-pf'>
       <view class='company-alias'>
-        <text>{{company.alias}}</text>
+        <text>{{company.company}}</text>
       </view>
       <view class='company-score'>
         <text>{{company.score||'2.5'}}</text>
@@ -50,16 +49,15 @@
     <text>公司地址</text>
   </view>
   <view class='c-context'>
+  <map id="bmap" class="maps"  bindtap='maptap' longitude="{{company.position.lng}}" latitude="{{company.position.lat}}" markers="{{map.markers}}" covers="{{map.covers}}"  animation="{{map.mapAnimation}}"
+   bindmarkertap="markertap" controls="{{false}}"  enable-zoom="{{false}}" enable-scroll="{{false}}"
+   scale="{{map.scale}}" bindtap='getCompanyMap'	 style='height:280rpx;width:690rpx' show-location="{{false}}" >
+  </map>
+
     <view bindtap='getCompanyMap' class='company-addr'>
-      <view class='c-addr'>{{company.addr}}</view>
-      <view class='c-ico'>＞</view>
+      <text class='c-addr'>{{company.addr}}</text>
     </view>
   </view>
 </view>
-<view wx:if="{{!!company.source}}" class='d-line'></view>
-<view wx:if="{{!!company.source}}" class='c-container'>
-  <view class='c-context company-source'>
-    <text>以上数据来源自 {{company.source}}</text>
-  </view>
-</view>
+
 </view>

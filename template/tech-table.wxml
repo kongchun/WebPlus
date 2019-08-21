@@ -92,7 +92,7 @@
           wx:key="id"
           wx:if="{{index>=0 && index<10}}" data-company="{{rank}}">
       <view class="rank__no no__{{index+1}}">{{index + 1}}</view>
-      <image lazy-load class="rank__icon" src="{{rank.logo}}" />
+      <image lazy-load class="rank__icon" src="{{rank.logo||'../../images/logo_def.jpg'}}" mode='aspectFit'/>
       <view class="rank__info">
         <view class="rank__comp">
           <view class="rank__name">{{rank.company}}</view>
@@ -130,7 +130,7 @@
           wx:key="id"
           wx:if="{{index>=0 && index<10}}" data-company="{{rank}}">
       <view class="rank__no no__{{index+1}}">{{index + 1}}</view>
-      <image lazy-load class="rank__icon" src="{{rank.logo}}" />
+         <image lazy-load class="rank__icon" src="{{rank.logo||'../../images/logo_def.jpg'}}" mode='aspectFit'/>
       <view class="rank__info">
         <view class="rank__comp">
           <view class="rank__name">{{rank.company}}</view>

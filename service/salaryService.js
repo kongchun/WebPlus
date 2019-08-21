@@ -94,7 +94,7 @@ class SalaryService {
 
   async getCompanyListInfo(data){
     var names = data.map((i)=>{
-        return i.company;   
+        return i.alias;   
     })
     let alias = names.join(",");
     let list = await this.getCompanyInfo(alias);
@@ -109,6 +109,7 @@ class SalaryService {
   }
 
   async getCompanyInfoById(_id) {
+    //console.log(_id);
     let companyInfo = await this.postDataByURL(wx.api.ADDR.GET_COMPANY_BY_ID, { _id });
     if (!companyInfo || !companyInfo['_id']){
       return null;

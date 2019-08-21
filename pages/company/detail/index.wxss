@@ -88,9 +88,11 @@ margin: 20rpx 0rpx;
   flex-direction: row;
 }
 .c-addr{
+  color: #717171;
   width: 670rpx;
   display: flex;
-  margin: 5rpx 0;
+  margin: 8rpx 0;
+  font-size:30rpx;
 }
 .c-ico{
   width: 30rpx;
@@ -111,8 +113,9 @@ margin: 20rpx 0rpx;
   align-items:center;
 }
 .company-score{
-  width: 100rpx;
-  height: 50rpx;
+  width: 80rpx;
+  height: 46rpx;
+  font-size: 28rpx;
   color: #FFFFFF;
   background-color: #FF664F;
   display:flex;
@@ -121,9 +124,6 @@ margin: 20rpx 0rpx;
   border-radius: 10rpx;
 }
 
-map{
-  border-radius: 20rpx;
-}
 .company-source{
   margin-top: 30rpx;
   font-size: 22rpx;

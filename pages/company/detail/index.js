@@ -29,6 +29,7 @@ Page({
       wx.navigateBack({});
       return;
     }
+    console.log(_id);
     this._id = _id;
   },
 
@@ -56,10 +57,12 @@ Page({
       }
       company.salaryLabel = salaryLabel;
       let description = company.description.replace(/(^\s*)|(\s*$)/g, "");
-      if (description.indexOf("\\n") > -1) {
-        description = description.replace(/\\n/ig, "<br>");
-      } else {
-        description = description.replace(/。\s/ig, "。<br>");
+      if (description!=""){
+        if (description.indexOf("\\n") > -1) {
+          description = description.replace(/\\n/ig, "<br>");
+        } else {
+          description = description.replace(/。\s/ig, "。<br>");
+        }
       }
 
       //console.log(description)

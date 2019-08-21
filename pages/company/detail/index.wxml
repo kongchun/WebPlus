@@ -59,5 +59,6 @@
     </view>
   </view>
 </view>
-
+<view class='d-line'></view>
+<view class='d-line'></view>
 </view>

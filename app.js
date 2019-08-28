@@ -2,23 +2,43 @@
 // wx.host = "https://technologycloud.cn";
 wx.host = "https://salary.techwebplus.cn";
 //wx.host = "http://salary.webstd.cn";
-wx.host = "http://127.0.0.1:5000";
+//wx.host = "http://127.0.0.1:5000";
 wx.api = require('utils/api.js');
 wx.pro = require('utils/promisify.js');
 wx.service = require('utils/service.js');
 const cache = require('utils/cache.js');
+const CACHE_VER_KEY = "cacheVersion"
+const verion = 204;
+
 //https://unpkg.com/@antv/f2@3.3.9/dist/
 App({
   onLaunch: function () {
-    // 展示本地存储能力
-    // 登录
+
     var data = new Date();
-    let month = (data.getFullYear()+""+data.getMonth());
-    let lastMonth = cache.get("m");
-    if(lastMonth != month){
+    let month = (data.getFullYear() + "" + data.getMonth());
+
+    let curCacheVer = verion;
+    let cacheVersion = cache.get(CACHE_VER_KEY);
+  
+    if (cacheVersion == null || curCacheVer > cacheVersion) {
+      console.log("clearCache");
       wx.clearStorageSync();
+      cache.set(CACHE_VER_KEY, curCacheVer);
       cache.set("m", month);
     }
+
+    // 展示本地存储能力
+    // 登录
+
+    let lastMonth = cache.get("m");
+    if(lastMonth != month){
+      console.log("clearCache");
+      wx.clearStorageSync();
+      cache.set(CACHE_VER_KEY, curCacheVer);
+      cache.set("m", month);
+    }
+
+
     
     wx.login({
       success: res => {
@@ -45,6 +65,8 @@ App({
         }
       }
     })
+
+    
   },
   globalData: {
     userInfo: null

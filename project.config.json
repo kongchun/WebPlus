@@ -1,82 +1,80 @@
 {
-	"description": "项目配置文件。",
-	"setting": {
-		"urlCheck": false,
-		"es6": true,
-		"postcss": true,
-		"minified": true,
-		"newFeature": true,
-		"nodeModules": true,
-		"autoAudits": false,
-		"checkInvalidKey": true,
-		"checkSiteMap": true,
-		"uploadWithSourceMap": true,
-		"babelSetting": {
-			"ignore": [],
-			"disablePlugins": [],
-			"outputPath": ""
-		}
-	},
-	"compileType": "miniprogram",
-	"libVersion": "2.8.0",
-	"appid": "wxf915b827833162a1",
-	"projectname": "%E5%89%8D%E7%AB%AFPlus",
-	"isGameTourist": false,
-	"simulatorType": "wechat",
-	"simulatorPluginLibVersion": {},
-	"condition": {
-		"search": {
-			"current": -1,
-			"list": []
-		},
-		"conversation": {
-			"current": -1,
-			"list": []
-		},
-		"plugin": {
-			"current": -1,
-			"list": []
-		},
-		"game": {
-			"currentL": -1,
-			"list": []
-		},
-		"miniprogram": {
-			"current": 4,
-			"list": [
-				{
-					"id": -1,
-					"name": "column",
-					"pathName": "pages/charts/column/index",
-					"query": ""
-				},
-				{
-					"id": 1,
-					"name": "public",
-					"pathName": "pages/url/pubpage",
-					"query": "url=/pages/url/pubpage?url=https://mp.weixin.qq.com/s?__biz=MzIyMjE2ODEzNg==&mid=2658086983&idx=1&sn=3510e6a86ce1ff685d0e91a161a1e0c9&scene=19"
-				},
-				{
-					"id": 2,
-					"name": "salary",
-					"pathName": "pages/salary/index",
-					"query": "data={\"month\":\"6\",\"average\":9712.07,\"read\":3,\"compare\":\"同比下降0.5%\",\"per\":\"down\"}"
-				},
-				{
-					"id": -1,
-					"name": "公司排名",
-					"pathName": "pages/company/ranking/index",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 4,
-					"name": "公司详情",
-					"pathName": "pages/company/detail/index",
-					"query": "_id=5d29c20bdf56e8330cbea06e",
-					"scene": null
-				}
-			]
-		}
-	}
+  "description": "项目配置文件。",
+  "setting": {
+    "urlCheck": false,
+    "es6": true,
+    "postcss": true,
+    "minified": true,
+    "newFeature": true,
+    "nodeModules": true,
+    "autoAudits": false,
+    "checkInvalidKey": true,
+    "checkSiteMap": true,
+    "uploadWithSourceMap": true,
+    "useMultiFrameRuntime": false,
+    "useApiHook": true,
+    "babelSetting": {
+      "ignore": [],
+      "disablePlugins": [],
+      "outputPath": ""
+    },
+    "useIsolateContext": true,
+    "useCompilerModule": true,
+    "userConfirmedUseCompilerModuleSwitch": false,
+    "packNpmManually": false,
+    "packNpmRelationList": [],
+    "minifyWXSS": true,
+    "scopeDataCheck": false
+  },
+  "compileType": "miniprogram",
+  "libVersion": "2.8.0",
+  "appid": "wxf915b827833162a1",
+  "projectname": "%E5%89%8D%E7%AB%AFPlus",
+  "isGameTourist": false,
+  "simulatorType": "wechat",
+  "simulatorPluginLibVersion": {},
+  "condition": {
+    "search": {
+      "list": []
+    },
+    "conversation": {
+      "list": []
+    },
+    "plugin": {
+      "list": []
+    },
+    "game": {
+      "currentL": -1,
+      "list": []
+    },
+    "miniprogram": {
+      "list": [
+        {
+          "id": -1,
+          "name": "column",
+          "pathName": "pages/charts/column/index",
+          "query": ""
+        },
+        {
+          "id": 1,
+          "name": "public",
+          "pathName": "pages/url/pubpage",
+          "query": "url=/pages/url/pubpage?url=https://mp.weixin.qq.com/s?__biz=MzIyMjE2ODEzNg==&mid=2658086983&idx=1&sn=3510e6a86ce1ff685d0e91a161a1e0c9&scene=19"
+        },
+        {
+          "id": 2,
+          "name": "salary",
+          "pathName": "pages/salary/index",
+          "query": "data={\"month\":\"6\",\"average\":9712.07,\"read\":3,\"compare\":\"同比下降0.5%\",\"per\":\"down\"}"
+        },
+        {
+          "id": -1,
+          "name": "公司排名",
+          "pathName": "pages/company/ranking/index",
+          "query": "",
+          "scene": null
+        }
+      ]
+    }
+  }
 }
